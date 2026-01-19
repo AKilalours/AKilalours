@@ -23,6 +23,7 @@ My projects prioritize **reproducibility, measurable performance, and reliabilit
   <img src="https://img.shields.io/badge/Llama%203-0467DF?style=for-the-badge&logo=meta&logoColor=white" />
   <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logoColor=white" />
   <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/SentenceTransformers-FFCC00?style=for-the-badge&logoColor=black" />
 
 </p>
 
