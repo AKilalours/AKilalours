@@ -79,20 +79,15 @@ My projects prioritize **reproducibility, measurable performance, and reliabilit
 
 ---
 ## Featured Projects
-### 1) Secure PrivateGPT / Enterprise RAG (Flagship)
-A privacy-first RAG assistant with **RBAC**, **audit logs**, and **prompt-injection + exfiltration tests**, plus an evaluation harness.
-- **Metrics:** Retrieval (MRR / nDCG / Recall@k), Answer groundedness, Injection success rate, p95 latency
-- **Stack:** Python, FastAPI, Vector DB, Embeddings, Docker, Eval harness  
-**Repo:** https://github.com/AKilalours/<REPO_NAME>
 
-### 2) Local Offline Voice Translator + RAG Assistant
+### 1) Local Offline Voice Translator + RAG Assistant
 Offline speech-to-speech translator with retrieval-backed Q/A and citations.
 - **Metrics:** WER (ASR), response latency, citation accuracy / groundedness
 - **Stack:** Whisper/ASR, RAG, TTS, Python, FastAPI (optional)  
 **Repo:** https://github.com/AKilalours/local-offline-voice-translator-rag-assistant
 >
 
-### 3) CryptoRiskBench + API (Engineering-focused)
+### 2) CryptoRiskBench + API (Engineering-focused)
 A reproducible time-series ML pipeline with baselines, evaluation reports, and an API.
 - **Metrics:** MAE/RMSE/MAPE vs baselines, backtesting setup, p95 inference latency
 - **Stack:** Python, scikit-learn/PyTorch, FastAPI, Docker, MLflow/W&B  
