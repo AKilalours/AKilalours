@@ -1,12 +1,22 @@
 # Akila Lourdes Miriyala Francis
 
-**AI Engineer | LLM/RAG Systems | Applied ML | Search & Recommendation | Autonomous AI Systems | MLOps-minded**
+**AI Engineer building autonomous AI systems, RAG evaluation tools, ML search platforms, and multimodal safety AI.**
 
-I build **production-style AI systems** across autonomous driving perception, multimodal safety AI, search/ranking systems, agentic RAG, and offline speech AI.
+I build production-style AI systems with a focus on measurable performance, reproducibility, reliability, evaluation, and deployment.
 
-My projects prioritize **measurable performance, reproducibility, reliability, evaluation, and deployment** — not just demos.
+Currently building **Guardian Drive**, a multimodal driver impairment intelligence system for autonomous vehicles using physiological signals, computer vision, BEV perception, CARLA simulation, CUDA acceleration, and real-time safety alerts.
 
----
+## Current Focus
+
+- Autonomous driving perception and safety AI
+- Multimodal driver impairment monitoring
+- Agentic RAG and adversarial RAG evaluation
+- ML search, recommendation, and learning-to-rank systems
+- MLOps, observability, latency benchmarking, and reproducible evaluation
+
+## Seeking GPU / Compute Support
+
+I’m actively seeking GPU compute support for open-source autonomous driving and safety AI research, especially for CARLA simulation, CUDA acceleration, BEV perception, and real-time multimodal inference.
 
 ## 🌐 Socials
 
@@ -238,7 +248,7 @@ StreamLens is a full ML search and recommendation platform covering ingestion, r
 
 ---
 
-### 3) Guardian Drive — Multimodal Driver Impairment Intelligence for Autonomous Vehicles.
+### 3) Guardian Drive — Multimodal Driver Impairment Intelligence for Autonomous Vehicles
 
 **Real-time driver monitoring and autonomous vehicle safety platform combining physiology, vision, perception, and dispatch automation.**
 
