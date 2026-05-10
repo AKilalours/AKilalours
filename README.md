@@ -209,7 +209,7 @@ My projects prioritize **measurable performance, reproducibility, reliability, e
 
 ## 🚀 Core Projects
 
-### 1) OpenDriveFM — Trust-Aware Autonomous Driving Perception
+### 1) OpenDriveFM — Trust-Aware Autonomous Driving BEV Perception
 
 **Camera-only BEV occupancy prediction + GPT-style trajectory estimation + self-supervised camera trust scoring.**
 
@@ -238,7 +238,7 @@ StreamLens is a full ML search and recommendation platform covering ingestion, r
 
 ---
 
-### 3) Guardian Drive — Multimodal AI Safety System
+### 3) Guardian Drive — Multimodal Driver Impairment Intelligence for Autonomous Vehicles.
 
 **Real-time driver monitoring and autonomous vehicle safety platform combining physiology, vision, perception, and dispatch automation.**
 
@@ -268,7 +268,7 @@ This project demonstrates offline AI deployment with speech recognition, retriev
 
 ---
 
-### 5) NeuraPilot — Agentic RAG Tutor with Observability
+### 5) NeuraPilot — Agentic RAG Tutor 
 
 **Compound AI learning assistant with LangGraph orchestration, semantic caching, RAG evaluation, and production monitoring.**
 
