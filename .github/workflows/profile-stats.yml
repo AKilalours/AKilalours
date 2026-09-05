@@ -1,0 +1,86 @@
+# Computes profile statistics from GitHub's own GraphQL API and publishes them as
+# shields.io endpoint JSON on the `output` branch.
+#
+# Why not a third-party stats service: those read the public REST API, so they miss
+# private contributions and often use a calendar year rather than a rolling 365 days.
+# The number they show then disagrees with the one on the profile page. This queries
+# contributionsCollection directly, which is the same source the profile header uses,
+# so the badge matches exactly.
+#
+# Requires the GH_PAT secret: a classic token with read:user. Without it the workflow
+# still runs, but the count reverts to public-only.
+
+name: Profile stats
+
+on:
+  schedule:
+    - cron: "25 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-stats
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query GitHub and write endpoint JSON
+        env:
+          TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          LOGIN: ${{ github.repository_owner }}
+        run: |
+          mkdir -p dist
+          cat > query.json <<'JSON'
+          {"query":"query($login:String!){user(login:$login){createdAt followers{totalCount} repositories(ownerAffiliations:OWNER,privacy:PUBLIC){totalCount} contributionsCollection{contributionCalendar{totalContributions} totalCommitContributions totalPullRequestContributions totalPullRequestReviewContributions restrictedContributionsCount}}}","variables":{"login":"LOGIN_PLACEHOLDER"}}
+          JSON
+          sed -i "s/LOGIN_PLACEHOLDER/$LOGIN/" query.json
+
+          curl -sS -H "Authorization: bearer $TOKEN" \
+               -H "Content-Type: application/json" \
+               -X POST -d @query.json https://api.github.com/graphql > raw.json
+
+          python3 - <<'PY'
+          import json, datetime, pathlib, sys
+
+          raw = json.load(open("raw.json"))
+          if "errors" in raw:
+              print("GraphQL errors:", raw["errors"]); sys.exit(1)
+          u = raw["data"]["user"]
+          c = u["contributionsCollection"]
+
+          total   = c["contributionCalendar"]["totalContributions"]
+          private = c["restrictedContributionsCount"]
+          years   = round((datetime.datetime.now(datetime.timezone.utc)
+                           - datetime.datetime.fromisoformat(u["createdAt"].replace("Z","+00:00"))).days / 365.25, 1)
+
+          def badge(name, label, message, color="58A6FF"):
+              pathlib.Path("dist", name).write_text(json.dumps({
+                  "schemaVersion": 1, "label": label, "message": str(message), "color": color,
+              }))
+              print(f"  {label:26s} {message}")
+
+          badge("contrib.json",  "contributions (365d)", f"{total:,}")
+          badge("prs.json",      "pull requests",        f"{c['totalPullRequestContributions']:,}", "7ee787")
+          badge("commits.json",  "commits",              f"{c['totalCommitContributions']:,}",      "d2a8ff")
+          badge("reviews.json",  "reviews",              f"{c['totalPullRequestReviewContributions']:,}", "ffa657")
+          badge("repos.json",    "public repos",         u["repositories"]["totalCount"], "8b949e")
+          badge("years.json",    "years on github",      years, "8b949e")
+
+          print(f"\n  of which private/restricted: {private:,}")
+          if private == 0:
+              print("  NOTE: private count is 0. Either there is no private activity, or GH_PAT")
+              print("        is missing and this ran on the public-only default token.")
+          PY
+
+      - name: Publish to the output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+          keep_history: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

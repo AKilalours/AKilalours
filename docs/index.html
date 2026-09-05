@@ -30,7 +30,20 @@
   #legend .dot{width:9px;height:9px;border-radius:50%;flex:none}
   #legend .foot{margin-top:10px;color:var(--dim);font-size:11px;line-height:1.4}
 
-  #hint{bottom:20px;right:20px;font-size:11px;color:var(--dim);text-align:right}
+  #hint{bottom:20px;right:20px;font-size:11px;color:var(--dim);text-align:right;line-height:1.7}
+  #hint kbd{background:#21262d;border:1px solid var(--line);border-radius:3px;
+    padding:0 4px;font-size:10px;color:var(--text)}
+  #back{top:20px;right:20px;display:none;cursor:pointer;font-size:12px;color:var(--accent);
+    user-select:none}
+  #search{top:20px;left:50%;transform:translateX(-50%);padding:0;overflow:hidden}
+  #search input{background:transparent;border:0;outline:0;color:var(--text);
+    font:13px/1 ui-monospace,Menlo,monospace;padding:11px 15px;width:230px}
+  #search input::placeholder{color:var(--dim)}
+  #stats{top:74px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--dim);
+    display:flex;gap:16px;white-space:nowrap;padding:9px 14px}
+  #stats b{color:var(--text)}
+  @media (max-width:900px){ #search,#stats{display:none} }
+  #back:hover{text-decoration:underline}
 
   #tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;
     background:#161b22f2;border:1px solid var(--line);border-radius:6px;padding:9px 11px;
@@ -48,12 +61,21 @@
 <div class="card" id="title">
   <h1>PROJECT GRAPH</h1>
   <div class="rule"></div>
-  <p>Akila Lourdes Miriyala Francis — public repositories, clustered by domain.
-     Drag to orbit, scroll to zoom, click a node to open the repo.</p>
+  <p>Akila Lourdes Miriyala Francis — public repositories, clustered by domain,
+     sized by measured lines of Python. A green halo marks a project with a live demo.</p>
 </div>
 
 <div class="card" id="legend"></div>
-<div class="card" id="hint">drag · scroll · click</div>
+<div class="card" id="back"></div>
+<div class="card" id="search"><input type="text" placeholder="filter projects…" spellcheck="false" /></div>
+<div class="card" id="stats"></div>
+<div class="card" id="hint">
+  drag to orbit &nbsp;·&nbsp; scroll to zoom<br/>
+  click a <b>node</b> to open the repo<br/>
+  click a <b>hub</b> or legend row to focus a domain<br/>
+  shift-click a legend row to hide it &nbsp;·&nbsp; <kbd>R</kbd> resets<br/>
+  type in the box above to filter
+</div>
 <div id="tip"></div>
 <div id="fallback"><div>
   <p>This page needs WebGL, which your browser has disabled.</p>
@@ -140,7 +162,7 @@ grid.position.y = -40; scene.add(grid);
 // Deterministic, so the picture is the same every load.
 // ---------------------------------------------------------------------------
 const keys = Object.keys(DOMAINS);
-const hubs = {}, nodes = [], labels = [];
+const hubs = {}, nodes = [], labels = [], rings = [];
 const GOLDEN = Math.PI * (3 - Math.sqrt(5));
 
 keys.forEach((k, i) => {
@@ -184,6 +206,16 @@ Object.entries(byDomain).forEach(([k, list]) => {
       url: `https://github.com/${USER}/${slug}`, home: mesh.position.clone(),
     };
     scene.add(mesh); nodes.push(mesh);
+
+    if (live) {                                  // halo marks a deployed demo
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(r * 1.55, 0.09, 8, 40),
+        new THREE.MeshBasicMaterial({ color: 0x7ee787, transparent: true, opacity: 0.75 })
+      );
+      ring.position.copy(mesh.position);
+      ring.userData = { follow: mesh, spin: 0.4 + idx * 0.05 };
+      scene.add(ring); rings.push(ring);
+    }
 
     if (loc) {                                   // label only the measured projects
       const c = document.createElement("canvas");
@@ -249,11 +281,43 @@ el.addEventListener("wheel", e => {
 const ray = new THREE.Raycaster();
 const pointer = new THREE.Vector2(-2, -2);
 const tip = document.getElementById("tip");
-let hovered = null;
+let hovered = null, hoveredHub = null;
 
 function fmt(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 
-el.addEventListener("click", () => { if (hovered) window.open(hovered.userData.url, "_blank", "noopener"); });
+// Camera flight, used when focusing a cluster or resetting.
+const HOME = { theta: 0.45, phi: 1.15, dist: 112, target: new THREE.Vector3(0, 2, 0) };
+let flight = null;
+function flyTo(target, dist, ms = 900) {
+  flight = { t0: performance.now(), ms,
+             from: { target: cam.target.clone(), dist: cam.dist },
+             to:   { target: target.clone(),     dist } };
+  idle = 0;
+}
+function focusDomain(k) {
+  const h = hubs[k];
+  if (h) { flyTo(h.position, 34); focused = k; updateBackLink();
+           history.replaceState(null, "", "#" + k); }
+}
+function resetView() { flyTo(HOME.target, HOME.dist); focused = null; updateBackLink();
+                       history.replaceState(null, "", location.pathname); }
+
+let focused = null;
+const back = document.getElementById("back");
+function updateBackLink() {
+  back.style.display = focused ? "block" : "none";
+  if (focused) back.textContent = "\u2190 back to all domains  ·  " + DOMAINS[focused].label;
+}
+addEventListener("keydown", e => { if (e.key === "r" || e.key === "R" || e.key === "Escape") resetView(); });
+back.addEventListener("click", resetView);
+
+el.addEventListener("click", () => {
+  if (hovered) {
+    window.open(hovered.userData.url, "_blank", "noopener");
+  } else if (hoveredHub) {
+    focused === hoveredHub ? resetView() : focusDomain(hoveredHub);
+  }
+});
 
 // ---------------------------------------------------------------------------
 // Legend, with per-domain toggling
@@ -264,20 +328,58 @@ keys.forEach(k => {
   const row = document.createElement("div");
   row.className = "row on";
   row.innerHTML = `<span class="dot" style="background:#${DOMAINS[k].color.toString(16).padStart(6,"0")}"></span>${DOMAINS[k].label}`;
-  row.onclick = () => {
-    active.has(k) ? active.delete(k) : active.add(k);
-    row.classList.toggle("on", active.has(k));
+  row.onclick = e => {
+    if (e.shiftKey) {                       // shift-click hides or shows a domain
+      active.has(k) ? active.delete(k) : active.add(k);
+      row.classList.toggle("on", active.has(k));
+    } else {
+      focused === k ? resetView() : focusDomain(k);
+    }
   };
   legend.appendChild(row);
 });
 const foot = document.createElement("div");
 foot.className = "foot";
-foot.textContent = "Node size = measured Python lines of code. Repos without a measured count render at minimum size.";
+foot.innerHTML = "Node size = measured Python lines of code. Repos without a measured count render at minimum size.<br/>Green halo = live demo deployed.";
 legend.appendChild(foot);
 
 // ---------------------------------------------------------------------------
 // Loop
 // ---------------------------------------------------------------------------
+// Free-text filter. Non-matching nodes dim rather than vanish, so the shape of the
+// graph stays readable while you narrow it.
+let query = "";
+const searchInput = document.querySelector("#search input");
+searchInput.addEventListener("input", e => { query = e.target.value.trim().toLowerCase(); idle = 0; });
+searchInput.addEventListener("keydown", e => {
+  e.stopPropagation();
+  if (e.key === "Escape") { searchInput.value = ""; query = ""; searchInput.blur(); }
+});
+function matches(n) {
+  if (!query) return true;
+  return n.userData.name.toLowerCase().includes(query)
+      || DOMAINS[n.userData.domain].label.toLowerCase().includes(query);
+}
+
+// Stats strip, computed from the same data the nodes are built from.
+(function renderStats() {
+  const measured = REPOS.filter(r => r[2]);
+  const totalLoc = measured.reduce((a, r) => a + r[2], 0);
+  const live = REPOS.filter(r => r[4]).length;
+  document.getElementById("stats").innerHTML =
+      `<span><b>${REPOS.length}</b> projects</span>`
+    + `<span><b>${Object.keys(DOMAINS).length}</b> domains</span>`
+    + `<span><b>${totalLoc.toLocaleString()}</b> lines of Python measured</span>`
+    + `<span><b>${live}</b> live demos</span>`;
+})();
+
+// Deep links: /#retrieval opens focused on that cluster, and focusing updates the hash
+// so a particular view can be shared.
+function applyHash() {
+  const k = location.hash.replace("#", "");
+  if (DOMAINS[k]) focusDomain(k);
+}
+
 const clock = new THREE.Clock();
 function frame() {
   requestAnimationFrame(frame);
@@ -289,22 +391,46 @@ function frame() {
 
   nodes.forEach(n => {
     const on = active.has(n.userData.domain);
+    const hit = matches(n);
     n.visible = on;
+    n.material.opacity = hit ? 1 : 0.12;
+    n.material.transparent = !hit;
     n.position.y = n.userData.home.y + Math.sin(t * 0.7 + n.userData.phase) * 0.5;
     const target = n === hovered ? n.userData.baseR * 1.32 : n.userData.baseR;
     const s = THREE.MathUtils.lerp(n.scale.x * n.userData.baseR, target, 0.18) / n.userData.baseR;
     n.scale.setScalar(s);
-    n.material.emissiveIntensity = n === hovered ? 1.0 : 0.55;
+    n.material.emissiveIntensity = n === hovered ? 1.0 : (matches(n) ? 0.55 : 0.06);
   });
   Object.entries(hubs).forEach(([k, h]) => { h.visible = active.has(k); h.rotation.y = t * 0.12; });
+  rings.forEach(rg => {
+    rg.visible = rg.userData.follow.visible;
+    rg.position.copy(rg.userData.follow.position);
+    rg.rotation.x = t * rg.userData.spin;
+    rg.rotation.y = t * rg.userData.spin * 0.7;
+  });
   labels.forEach(l => {
-    l.visible = l.userData.follow.visible;
+    l.visible = l.userData.follow.visible && matches(l.userData.follow);
     l.position.set(l.userData.follow.position.x,
                    l.userData.follow.position.y + l.userData.offset,
                    l.userData.follow.position.z);
   });
 
+  // Ease any in-flight camera move.
+  if (flight) {
+    const k = Math.min(1, (performance.now() - flight.t0) / flight.ms);
+    const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;   // easeInOutCubic
+    cam.target.lerpVectors(flight.from.target, flight.to.target, e);
+    cam.dist = flight.from.dist + (flight.to.dist - flight.from.dist) * e;
+    if (k >= 1) flight = null;
+  }
+
   ray.setFromCamera(pointer, camera);
+  const hubHit = ray.intersectObjects(Object.values(hubs).filter(h => h.visible))[0];
+  hoveredHub = hubHit ? hubHit.object.userData.domain : null;
+  Object.entries(hubs).forEach(([k, h]) => {
+    h.material.opacity = (k === hoveredHub) ? 0.62 : 0.28;
+  });
+
   const hit = ray.intersectObjects(nodes.filter(n => n.visible))[0];
   const next = hit ? hit.object : null;
   if (next !== hovered) {
@@ -319,10 +445,20 @@ function frame() {
       tip.style.opacity = 1;
     } else tip.style.opacity = 0;
   }
+  if (!hovered && hoveredHub) {
+    const count = REPOS.filter(r => r[1] === hoveredHub).length;
+    tip.innerHTML = `<b>${DOMAINS[hoveredHub].label}</b>`
+      + `<span class="m">${count} project${count === 1 ? "" : "s"}</span>`
+      + `<span class="live">click to focus this cluster</span>`;
+    tip.style.opacity = 1;
+    el.style.cursor = "pointer";
+  }
   renderer.render(scene, camera);
 }
 applyCamera();
 frame();
+applyHash();
+addEventListener("hashchange", applyHash);
 
 addEventListener("resize", () => {
   camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();

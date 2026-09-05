@@ -25,6 +25,19 @@ MS Artificial Intelligence at LIU Brooklyn, graduating December 2026. Machine le
 intern on the R&D team at Jaan Health, working on clinical NLP over patient care
 timelines.
 
+<div align="center">
+
+<!-- Computed in .github/workflows/profile-stats.yml straight from GitHub's GraphQL
+     contributionsCollection over a rolling 365 days, the same source the profile
+     header uses. Third-party stat services read the public REST API and miss private
+     contributions, so their numbers disagree with the profile. These do not. -->
+<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FAKilalours%2FAKilalours%2Foutput%2Fcontrib.json&style=for-the-badge" alt="Contributions in the last 365 days" />
+<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FAKilalours%2FAKilalours%2Foutput%2Fcommits.json&style=for-the-badge" alt="Commits" />
+<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FAKilalours%2FAKilalours%2Foutput%2Fprs.json&style=for-the-badge" alt="Pull requests" />
+<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FAKilalours%2FAKilalours%2Foutput%2Frepos.json&style=for-the-badge" alt="Public repositories" />
+
+</div>
+
 <br/>
 
 <div align="center">
@@ -230,7 +243,109 @@ blocklist and RBAC gating.
   <img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/profile-3d-contrib/profile-green-animate.svg" alt="Isometric 3D view of the last year of contributions" width="100%" />
 </picture>
 
+<br/><br/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=AKilalours&theme=github-compact&hide_border=true&area=true&custom_title=Contribution%20activity%20(rolling%20year)" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=AKilalours&theme=github-light&hide_border=true&area=true&custom_title=Contribution%20activity%20(rolling%20year)" alt="Contribution activity over the last year" width="100%" />
+</picture>
+
 </div>
+
+<details>
+<summary>🐍 Snake and 👾 Pac-Man versions of the same graph</summary>
+
+<br/>
+
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AKilalours/AKilalours/output/snake-dark.svg" />
+  <img src="https://raw.githubusercontent.com/AKilalours/AKilalours/output/snake-light.svg" alt="Snake animation traversing the contribution graph" width="100%" />
+</picture>
+
+<br/><br/>
+
+<img src="https://raw.githubusercontent.com/AKilalours/AKilalours/output/pacman-contribution-graph.svg" alt="Pac-Man traversing the contribution graph" width="100%" />
+
+</div>
+
+</details>
+
+<details>
+<summary>📊 Repository activity at a glance</summary>
+
+<br/>
+
+<table>
+  <thead>
+    <tr>
+      <td><b>Project</b></td><td><b>Stars</b></td><td><b>Forks</b></td><td><b>Issues</b></td><td><b>Last commit</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/AKilalours/opendrivefm"><b>OpenDriveFM</b></a></td>
+      <td><img alt="stars" src="https://img.shields.io/github/stars/AKilalours/opendrivefm?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="forks" src="https://img.shields.io/github/forks/AKilalours/opendrivefm?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="issues" src="https://img.shields.io/github/issues/AKilalours/opendrivefm?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="last-commit" src="https://img.shields.io/github/last-commit/AKilalours/opendrivefm?style=flat-square&labelColor=161b22&color=30363d"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/AKilalours/Panagram_Forge"><b>FORGE</b></a></td>
+      <td><img alt="stars" src="https://img.shields.io/github/stars/AKilalours/Panagram_Forge?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="forks" src="https://img.shields.io/github/forks/AKilalours/Panagram_Forge?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="issues" src="https://img.shields.io/github/issues/AKilalours/Panagram_Forge?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="last-commit" src="https://img.shields.io/github/last-commit/AKilalours/Panagram_Forge?style=flat-square&labelColor=161b22&color=30363d"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/AKilalours/streaming-canvas-search-ltr"><b>StreamLens</b></a></td>
+      <td><img alt="stars" src="https://img.shields.io/github/stars/AKilalours/streaming-canvas-search-ltr?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="forks" src="https://img.shields.io/github/forks/AKilalours/streaming-canvas-search-ltr?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="issues" src="https://img.shields.io/github/issues/AKilalours/streaming-canvas-search-ltr?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="last-commit" src="https://img.shields.io/github/last-commit/AKilalours/streaming-canvas-search-ltr?style=flat-square&labelColor=161b22&color=30363d"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/AKilalours/guardian-drive"><b>Guardian Drive</b></a></td>
+      <td><img alt="stars" src="https://img.shields.io/github/stars/AKilalours/guardian-drive?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="forks" src="https://img.shields.io/github/forks/AKilalours/guardian-drive?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="issues" src="https://img.shields.io/github/issues/AKilalours/guardian-drive?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="last-commit" src="https://img.shields.io/github/last-commit/AKilalours/guardian-drive?style=flat-square&labelColor=161b22&color=30363d"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/AKilalours/akila-safety-eval-lab"><b>SafetyEval Lab</b></a></td>
+      <td><img alt="stars" src="https://img.shields.io/github/stars/AKilalours/akila-safety-eval-lab?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="forks" src="https://img.shields.io/github/forks/AKilalours/akila-safety-eval-lab?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="issues" src="https://img.shields.io/github/issues/AKilalours/akila-safety-eval-lab?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="last-commit" src="https://img.shields.io/github/last-commit/AKilalours/akila-safety-eval-lab?style=flat-square&labelColor=161b22&color=30363d"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/AKilalours/neurapilot"><b>NeuraPilot</b></a></td>
+      <td><img alt="stars" src="https://img.shields.io/github/stars/AKilalours/neurapilot?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="forks" src="https://img.shields.io/github/forks/AKilalours/neurapilot?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="issues" src="https://img.shields.io/github/issues/AKilalours/neurapilot?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="last-commit" src="https://img.shields.io/github/last-commit/AKilalours/neurapilot?style=flat-square&labelColor=161b22&color=30363d"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/AKilalours/chronicguard-ai"><b>ChronicGuard</b></a></td>
+      <td><img alt="stars" src="https://img.shields.io/github/stars/AKilalours/chronicguard-ai?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="forks" src="https://img.shields.io/github/forks/AKilalours/chronicguard-ai?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="issues" src="https://img.shields.io/github/issues/AKilalours/chronicguard-ai?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="last-commit" src="https://img.shields.io/github/last-commit/AKilalours/chronicguard-ai?style=flat-square&labelColor=161b22&color=30363d"/></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/AKilalours/Esophageal-Cancer-Detection"><b>GI Lesion Screening</b></a></td>
+      <td><img alt="stars" src="https://img.shields.io/github/stars/AKilalours/Esophageal-Cancer-Detection?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="forks" src="https://img.shields.io/github/forks/AKilalours/Esophageal-Cancer-Detection?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="issues" src="https://img.shields.io/github/issues/AKilalours/Esophageal-Cancer-Detection?style=flat-square&labelColor=161b22&color=30363d"/></td>
+      <td><img alt="last-commit" src="https://img.shields.io/github/last-commit/AKilalours/Esophageal-Cancer-Detection?style=flat-square&labelColor=161b22&color=30363d"/></td>
+    </tr>
+  </tbody>
+</table>
+
+<sub>Badges are live from the GitHub API, so this table never goes stale.</sub>
+
+</details>
 
 <br/>
 

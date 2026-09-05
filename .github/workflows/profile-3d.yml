@@ -17,7 +17,12 @@ jobs:
       - name: Generate
         uses: yoshi389111/github-profile-3d-contrib@v0.9.3
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The default GITHUB_TOKEN only sees PUBLIC contributions, which is why the
+          # calendar undercounts against the number on the profile page. A classic PAT
+          # with the read:user scope, stored as the GH_PAT secret, makes private
+          # contributions count too. Only aggregate totals are exposed: no repo names,
+          # no code. Falls back to the default token if the secret is absent.
+          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
       - name: Commit if changed
         run: |
