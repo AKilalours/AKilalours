@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Akila Lourdes Miriyala Francis — Project Graph</title>
+<meta name="description" content="An interactive 3D map of my public repositories, clustered by domain and sized by measured Python lines of code." />
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22cc; --line:#30363d;
+    --text:#e6edf3; --dim:#8b949e; --accent:#7ee787;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
+    font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}
+  #app{position:fixed;inset:0}
+  canvas{display:block;outline:none}
+
+  .card{position:fixed;background:var(--panel);border:1px solid var(--line);
+    border-radius:8px;padding:14px 16px;backdrop-filter:blur(8px)}
+  #title{top:20px;left:20px;max-width:min(400px,calc(100vw - 40px))}
+  #title h1{margin:0 0 4px;font-size:15px;letter-spacing:1.2;font-weight:600}
+  #title p{margin:0;font-size:12px;color:var(--dim)}
+  #title .rule{width:56px;height:2px;background:var(--accent);margin:8px 0}
+
+  #legend{bottom:20px;left:20px;font-size:12px}
+  #legend .row{display:flex;align-items:center;gap:8px;margin:3px 0;cursor:pointer;
+    opacity:.55;transition:opacity .15s}
+  #legend .row.on{opacity:1}
+  #legend .dot{width:9px;height:9px;border-radius:50%;flex:none}
+  #legend .foot{margin-top:10px;color:var(--dim);font-size:11px;line-height:1.4}
+
+  #hint{bottom:20px;right:20px;font-size:11px;color:var(--dim);text-align:right}
+
+  #tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;
+    background:#161b22f2;border:1px solid var(--line);border-radius:6px;padding:9px 11px;
+    font-size:12px;max-width:270px;z-index:10}
+  #tip b{color:var(--text)} #tip .m{color:var(--dim);font-size:11px;display:block;margin-top:3px}
+  #tip .live{color:var(--accent);font-size:11px;display:block;margin-top:4px}
+
+  #fallback{position:fixed;inset:0;display:none;place-items:center;text-align:center;padding:24px}
+  @media (max-width:640px){ #legend{font-size:11px} #hint{display:none} }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<div class="card" id="title">
+  <h1>PROJECT GRAPH</h1>
+  <div class="rule"></div>
+  <p>Akila Lourdes Miriyala Francis — public repositories, clustered by domain.
+     Drag to orbit, scroll to zoom, click a node to open the repo.</p>
+</div>
+
+<div class="card" id="legend"></div>
+<div class="card" id="hint">drag · scroll · click</div>
+<div id="tip"></div>
+<div id="fallback"><div>
+  <p>This page needs WebGL, which your browser has disabled.</p>
+  <p style="color:#8b949e">The same projects are listed on
+     <a href="https://github.com/AKilalours" style="color:#58a6ff">github.com/AKilalours</a>.</p>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script>
+// ---------------------------------------------------------------------------
+// Data. `loc` is measured Python lines of code, counted directly from the
+// working tree (excluding virtualenvs, node_modules and site-packages).
+// Repos without a measured count carry loc:null and render at the floor size.
+// ---------------------------------------------------------------------------
+const DOMAINS = {
+  perception: { label: "Autonomous driving & perception", color: 0x58a6ff },
+  retrieval:  { label: "Retrieval, RAG & agents",         color: 0x7ee787 },
+  search:     { label: "Search, ranking & recommendation", color: 0xd2a8ff },
+  health:     { label: "Healthcare & medical AI",          color: 0xff7b72 },
+  safety:     { label: "Safety & evaluation",              color: 0xf2cc60 },
+  other:      { label: "Systems, security & web",          color: 0x8b949e },
+};
+
+const REPOS = [
+  // name, domain, measured python LOC, repo slug, live demo
+  ["OpenDriveFM",        "perception", 20351, "opendrivefm",              "https://huggingface.co/spaces/Akilalourdes/opendrivefm"],
+  ["Guardian Drive",     "perception", 17364, "guardian-drive",           "https://huggingface.co/spaces/Akilalourdes/guardian-drive-demo"],
+  ["Self-Driving Cars",  "perception", null,  "Self-Driving-Cars-Specialization", null],
+
+  ["FORGE",              "retrieval",  27574, "Panagram_Forge",           null],
+  ["NeuraPilot",         "retrieval",  6609,  "neurapilot",               null],
+  ["Offline Voice RAG",  "retrieval",  3965,  "rag-adversarial-robustness-eval-harness", null],
+
+  ["StreamLens",         "search",     28015, "streaming-canvas-search-ltr", null],
+  ["FashionFinder",      "search",     null,  "FashionFinder",            null],
+
+  ["ChronicGuard",       "health",     6457,  "chronicguard-ai",          null],
+  ["GI Lesion Screening","health",     null,  "Esophageal-Cancer-Detection", null],
+  ["Health Risk System", "health",     null,  "AI-Powered-Health-Risk-Prediction-System-for-Multi-Disease-Diagnosis", null],
+  ["Distress KWS",       "health",     null,  "noise-robust-kws-distress-detection", null],
+
+  ["SafetyEval Lab",     "safety",     16342, "akila-safety-eval-lab",    null],
+  ["Crypto Risk Bench",  "safety",     null,  "Crypto-Risk-Bench",        null],
+
+  ["StegoCloak",         "other",      null,  "StegoCloak",               null],
+  ["Portfolio",          "other",      null,  "portfolio",                null],
+  ["Adaptive Quiz Coach","other",      null,  "IDEATHON_2022_ACFL",       null],
+];
+
+const USER = "AKilalours";
+const app = document.getElementById("app");
+
+// ---------------------------------------------------------------------------
+// Scene
+// ---------------------------------------------------------------------------
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+} catch (e) {
+  document.getElementById("fallback").style.display = "grid";
+  throw e;
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+app.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0d1117);
+scene.fog = new THREE.FogExp2(0x0d1117, 0.0045);
+
+const camera = new THREE.PerspectiveCamera(52, innerWidth / innerHeight, 0.1, 800);
+camera.position.set(0, 26, 108);
+
+scene.add(new THREE.AmbientLight(0xffffff, 0.85));
+const key = new THREE.PointLight(0xffffff, 260, 400); key.position.set(60, 90, 70); scene.add(key);
+const rim = new THREE.PointLight(0x58a6ff, 140, 400); rim.position.set(-70, -30, -60); scene.add(rim);
+
+// Ground reference grid, faint.
+const grid = new THREE.GridHelper(300, 24, 0x21262d, 0x161b22);
+grid.position.y = -40; scene.add(grid);
+
+// ---------------------------------------------------------------------------
+// Layout: one hub per domain on a ring; repos on a golden-angle shell per hub.
+// Deterministic, so the picture is the same every load.
+// ---------------------------------------------------------------------------
+const keys = Object.keys(DOMAINS);
+const hubs = {}, nodes = [], labels = [];
+const GOLDEN = Math.PI * (3 - Math.sqrt(5));
+
+keys.forEach((k, i) => {
+  const a = (i / keys.length) * Math.PI * 2;
+  const pos = new THREE.Vector3(Math.cos(a) * 46, (i % 2 ? 9 : -9), Math.sin(a) * 46);
+  const mat = new THREE.MeshStandardMaterial({
+    color: DOMAINS[k].color, emissive: DOMAINS[k].color, emissiveIntensity: 0.5,
+    roughness: 0.35, metalness: 0.1, transparent: true, opacity: 0.28,
+  });
+  const hub = new THREE.Mesh(new THREE.IcosahedronGeometry(2.6, 1), mat);
+  hub.position.copy(pos); hub.userData = { hub: true, domain: k };
+  scene.add(hub); hubs[k] = hub;
+});
+
+const byDomain = {};
+REPOS.forEach(r => (byDomain[r[1]] = byDomain[r[1]] || []).push(r));
+
+Object.entries(byDomain).forEach(([k, list]) => {
+  const hub = hubs[k];
+  list.forEach(([name, domain, loc, slug, live], idx) => {
+    // Node radius from measured LOC; unmeasured repos sit at the floor.
+    const r = loc ? 1.1 + Math.sqrt(loc) / 95 : 0.95;
+    const shellR = 12 + (idx % 3) * 2.6;
+    const phi = Math.acos(1 - 2 * (idx + 0.5) / list.length);
+    const theta = GOLDEN * idx;
+
+    const mesh = new THREE.Mesh(
+      new THREE.SphereGeometry(r, 26, 20),
+      new THREE.MeshStandardMaterial({
+        color: DOMAINS[domain].color, emissive: DOMAINS[domain].color,
+        emissiveIntensity: 0.55, roughness: 0.28, metalness: 0.1,
+      })
+    );
+    mesh.position.set(
+      hub.position.x + shellR * Math.sin(phi) * Math.cos(theta),
+      hub.position.y + shellR * Math.cos(phi) * 0.75,
+      hub.position.z + shellR * Math.sin(phi) * Math.sin(theta)
+    );
+    mesh.userData = {
+      name, domain, loc, live, baseR: r, phase: idx * 1.7 + keys.indexOf(domain),
+      url: `https://github.com/${USER}/${slug}`, home: mesh.position.clone(),
+    };
+    scene.add(mesh); nodes.push(mesh);
+
+    if (loc) {                                   // label only the measured projects
+      const c = document.createElement("canvas");
+      const ctx = c.getContext("2d");
+      ctx.font = "600 34px ui-monospace, Menlo, monospace";
+      c.width = Math.ceil(ctx.measureText(name).width) + 24; c.height = 48;
+      const g = c.getContext("2d");
+      g.font = "600 34px ui-monospace, Menlo, monospace";
+      g.fillStyle = "rgba(230,237,243,0.92)"; g.textBaseline = "middle";
+      g.fillText(name, 12, 25);
+      const spr = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false, opacity: 0.9,
+      }));
+      spr.scale.set(c.width / 26, c.height / 26, 1);
+      spr.position.copy(mesh.position).add(new THREE.Vector3(0, r + 2.0, 0));
+      spr.userData = { follow: mesh, offset: r + 2.0 };
+      scene.add(spr); labels.push(spr);
+    }
+
+    const geo = new THREE.BufferGeometry().setFromPoints([hub.position, mesh.position]);
+    scene.add(new THREE.Line(geo, new THREE.LineBasicMaterial({
+      color: DOMAINS[domain].color, transparent: true, opacity: 0.22,
+    })));
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Orbit control, written inline so the page has one dependency, not two.
+// ---------------------------------------------------------------------------
+const cam = { theta: 0.45, phi: 1.15, dist: 112, target: new THREE.Vector3(0, 2, 0) };
+let drag = null, idle = 0;
+
+function applyCamera() {
+  camera.position.set(
+    cam.target.x + cam.dist * Math.sin(cam.phi) * Math.sin(cam.theta),
+    cam.target.y + cam.dist * Math.cos(cam.phi),
+    cam.target.z + cam.dist * Math.sin(cam.phi) * Math.cos(cam.theta)
+  );
+  camera.lookAt(cam.target);
+}
+const el = renderer.domElement;
+el.style.cursor = "grab";
+el.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY }; idle = 0; el.style.cursor = "grabbing"; });
+addEventListener("pointerup", () => { drag = null; el.style.cursor = "grab"; });
+addEventListener("pointermove", e => {
+  pointer.x = (e.clientX / innerWidth) * 2 - 1;
+  pointer.y = -(e.clientY / innerHeight) * 2 + 1;
+  tip.style.left = (e.clientX + 16) + "px";
+  tip.style.top = (e.clientY + 16) + "px";
+  if (!drag) return;
+  cam.theta -= (e.clientX - drag.x) * 0.005;
+  cam.phi = Math.max(0.25, Math.min(2.6, cam.phi - (e.clientY - drag.y) * 0.005));
+  drag = { x: e.clientX, y: e.clientY }; idle = 0;
+});
+el.addEventListener("wheel", e => {
+  e.preventDefault();
+  cam.dist = Math.max(48, Math.min(280, cam.dist + e.deltaY * 0.09)); idle = 0;
+}, { passive: false });
+
+// ---------------------------------------------------------------------------
+// Hover and click
+// ---------------------------------------------------------------------------
+const ray = new THREE.Raycaster();
+const pointer = new THREE.Vector2(-2, -2);
+const tip = document.getElementById("tip");
+let hovered = null;
+
+function fmt(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+
+el.addEventListener("click", () => { if (hovered) window.open(hovered.userData.url, "_blank", "noopener"); });
+
+// ---------------------------------------------------------------------------
+// Legend, with per-domain toggling
+// ---------------------------------------------------------------------------
+const legend = document.getElementById("legend");
+const active = new Set(keys);
+keys.forEach(k => {
+  const row = document.createElement("div");
+  row.className = "row on";
+  row.innerHTML = `<span class="dot" style="background:#${DOMAINS[k].color.toString(16).padStart(6,"0")}"></span>${DOMAINS[k].label}`;
+  row.onclick = () => {
+    active.has(k) ? active.delete(k) : active.add(k);
+    row.classList.toggle("on", active.has(k));
+  };
+  legend.appendChild(row);
+});
+const foot = document.createElement("div");
+foot.className = "foot";
+foot.textContent = "Node size = measured Python lines of code. Repos without a measured count render at minimum size.";
+legend.appendChild(foot);
+
+// ---------------------------------------------------------------------------
+// Loop
+// ---------------------------------------------------------------------------
+const clock = new THREE.Clock();
+function frame() {
+  requestAnimationFrame(frame);
+  const t = clock.getElapsedTime();
+  idle += clock.getDelta();
+
+  if (idle > 2.5) cam.theta += 0.0011;   // resume slow orbit after inactivity
+  applyCamera();
+
+  nodes.forEach(n => {
+    const on = active.has(n.userData.domain);
+    n.visible = on;
+    n.position.y = n.userData.home.y + Math.sin(t * 0.7 + n.userData.phase) * 0.5;
+    const target = n === hovered ? n.userData.baseR * 1.32 : n.userData.baseR;
+    const s = THREE.MathUtils.lerp(n.scale.x * n.userData.baseR, target, 0.18) / n.userData.baseR;
+    n.scale.setScalar(s);
+    n.material.emissiveIntensity = n === hovered ? 1.0 : 0.55;
+  });
+  Object.entries(hubs).forEach(([k, h]) => { h.visible = active.has(k); h.rotation.y = t * 0.12; });
+  labels.forEach(l => {
+    l.visible = l.userData.follow.visible;
+    l.position.set(l.userData.follow.position.x,
+                   l.userData.follow.position.y + l.userData.offset,
+                   l.userData.follow.position.z);
+  });
+
+  ray.setFromCamera(pointer, camera);
+  const hit = ray.intersectObjects(nodes.filter(n => n.visible))[0];
+  const next = hit ? hit.object : null;
+  if (next !== hovered) {
+    hovered = next;
+    el.style.cursor = hovered ? "pointer" : (drag ? "grabbing" : "grab");
+    if (hovered) {
+      const d = hovered.userData;
+      tip.innerHTML = `<b>${d.name}</b>`
+        + `<span class="m">${DOMAINS[d.domain].label}</span>`
+        + `<span class="m">${d.loc ? fmt(d.loc) + " lines of Python" : "size not measured"}</span>`
+        + (d.live ? `<span class="live">live demo available</span>` : ``);
+      tip.style.opacity = 1;
+    } else tip.style.opacity = 0;
+  }
+  renderer.render(scene, camera);
+}
+applyCamera();
+frame();
+
+addEventListener("resize", () => {
+  camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>
