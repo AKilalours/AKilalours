@@ -247,7 +247,7 @@ blocklist and RBAC gating.
 </div>
 
 <details>
-<summary>🐍 Snake and 👾 Pac-Man versions of the same graph</summary>
+<summary>🐍 Snake version of the same graph</summary>
 
 <br/>
 
@@ -258,9 +258,6 @@ blocklist and RBAC gating.
   <img src="https://raw.githubusercontent.com/AKilalours/AKilalours/output/snake-light.svg" alt="Snake animation traversing the contribution graph" width="100%" />
 </picture>
 
-<br/><br/>
-
-<img src="https://raw.githubusercontent.com/AKilalours/AKilalours/output/pacman-contribution-graph.svg" alt="Pac-Man traversing the contribution graph" width="100%" />
 
 </div>
 
