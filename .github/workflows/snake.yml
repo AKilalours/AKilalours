@@ -31,7 +31,7 @@ jobs:
             dist/snake-light.svg?palette=github-light
 
       - name: Generate Pac-Man variant
-        uses: abozanona/pacman-contribution-graph@v3
+        uses: abozanona/pacman-contribution-graph@v5.0.0
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: dist/pacman-contribution-graph.svg

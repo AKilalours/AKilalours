@@ -5,7 +5,7 @@
   <img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/hero-light.svg" alt="Akila Lourdes Miriyala Francis, machine learning engineer" width="100%" />
 </picture>
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=17&duration=3600&pause=1000&center=true&vCenter=true&width=760&color=58A6FF&lines=Machine+learning+engineer+%C2%B7+Brooklyn%2C+NY;BEV+perception+%C2%B7+agentic+RAG+%C2%B7+learning-to-rank;I+publish+the+numbers%2C+including+the+bad+ones" alt="" />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=17&duration=3600&pause=1000&center=true&vCenter=true&width=900&color=58A6FF&lines=Machine+learning+engineer+%C2%B7+Brooklyn%2C+NY;BEV+perception+%C2%B7+agentic+RAG+%C2%B7+learning-to-rank;I+publish+the+numbers%2C+including+the+bad+ones" alt="" />
 
 <br/>
 
@@ -243,12 +243,6 @@ blocklist and RBAC gating.
   <img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/profile-3d-contrib/profile-green-animate.svg" alt="Isometric 3D view of the last year of contributions" width="100%" />
 </picture>
 
-<br/><br/>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=AKilalours&theme=github-compact&hide_border=true&area=true&custom_title=Contribution%20activity%20(rolling%20year)" />
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=AKilalours&theme=github-light&hide_border=true&area=true&custom_title=Contribution%20activity%20(rolling%20year)" alt="Contribution activity over the last year" width="100%" />
-</picture>
 
 </div>
 
