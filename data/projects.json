@@ -1,0 +1,284 @@
+{
+  "_comment": "Single source of truth. The README tiles, the benchmark board, the Pages explorer and the issue bot all read this file. Edit here, never in the generated SVGs.",
+  "user": "AKilalours",
+  "domains": {
+    "perception": {
+      "label": "Perception",
+      "color": "#58a6ff"
+    },
+    "retrieval": {
+      "label": "Retrieval & RAG",
+      "color": "#a371f7"
+    },
+    "search": {
+      "label": "Search & ranking",
+      "color": "#3fb950"
+    },
+    "health": {
+      "label": "Clinical & medical",
+      "color": "#ff7b72"
+    },
+    "safety": {
+      "label": "Safety & evaluation",
+      "color": "#f2cc60"
+    },
+    "other": {
+      "label": "Systems & web",
+      "color": "#8b949e"
+    }
+  },
+  "projects": [
+    {
+      "id": "opendrivefm",
+      "name": "OpenDriveFM",
+      "slug": "opendrivefm",
+      "domain": "perception",
+      "tagline": "trust-aware multi-camera BEV perception",
+      "stack": "nuScenes · PyTorch Lightning",
+      "loc": 20351,
+      "demo": "https://huggingface.co/spaces/Akilalourdes/opendrivefm",
+      "headline": {
+        "value": 0.764,
+        "label": "pooled AUROC, camera trust",
+        "format": "num"
+      },
+      "metrics": [
+        {
+          "name": "Camera trust AUROC, v11 baseline",
+          "value": 0.434,
+          "ci": [
+            0.419,
+            0.449
+          ],
+          "target": null,
+          "status": "superseded",
+          "note": "CI entirely below 0.5. The scorer was inverted, not weak."
+        },
+        {
+          "name": "Camera trust AUROC, fix v1",
+          "value": 0.652,
+          "ci": [
+            0.636,
+            0.668
+          ],
+          "target": null,
+          "status": "superseded",
+          "note": ""
+        },
+        {
+          "name": "Camera trust AUROC, fix v2",
+          "value": 0.764,
+          "ci": [
+            0.75,
+            0.777
+          ],
+          "target": null,
+          "status": "current",
+          "note": "82 held-out frames, 5 fault types, 6 cameras, 1,000 bootstrap resamples."
+        }
+      ],
+      "finding": "The harness scored the trust estimator as binary classification and returned an AUROC whose confidence interval sat entirely below chance. Trust was going up when a camera degraded. The scorer was inverted, and only the harness caught it."
+    },
+    {
+      "id": "forge",
+      "name": "FORGE",
+      "slug": "Panagram_Forge",
+      "domain": "retrieval",
+      "tagline": "AI-generated text detection",
+      "stack": "DeBERTa-v3 · FastAPI · Streamlit",
+      "loc": 27574,
+      "demo": null,
+      "headline": {
+        "value": 66,
+        "label": "tests over 188 modules",
+        "format": "int"
+      },
+      "metrics": [
+        {
+          "name": "Test count",
+          "value": 66,
+          "ci": null,
+          "target": null,
+          "status": "current",
+          "note": "Across 188 Python modules."
+        }
+      ],
+      "finding": "Built as a service rather than a notebook: fine-tuned on an RTX 4090, served behind FastAPI. No detection accuracy is published yet, so the tile shows test coverage and nothing more."
+    },
+    {
+      "id": "streamlens",
+      "name": "StreamLens",
+      "slug": "streaming-canvas-search-ltr",
+      "domain": "search",
+      "tagline": "hybrid search and learning-to-rank",
+      "stack": "LightGBM LambdaRank · Kafka · FAISS",
+      "loc": 28015,
+      "demo": null,
+      "headline": null,
+      "metrics": [],
+      "finding": "Inference needed explicit schema-drift reconciliation because models had been trained against inconsistent feature sets over time. A production ML failure mode you only learn by hitting it."
+    },
+    {
+      "id": "guardian-drive",
+      "name": "Guardian Drive",
+      "slug": "guardian-drive",
+      "domain": "perception",
+      "tagline": "multimodal driver-safety monitoring",
+      "stack": "PointPillars · BEVFormer · VIO",
+      "loc": 17364,
+      "demo": "https://huggingface.co/spaces/Akilalourdes/guardian-drive-demo",
+      "headline": null,
+      "metrics": [],
+      "finding": "Safety decisions run through a rule-based state machine with threshold hysteresis, not a learned policy. A learned policy would have been easier to demo and harder to defend."
+    },
+    {
+      "id": "safetyeval",
+      "name": "SafetyEval Lab",
+      "slug": "akila-safety-eval-lab",
+      "domain": "safety",
+      "tagline": "structured LLM safety evaluation",
+      "stack": "Pydantic · Wilson intervals · CI",
+      "loc": 16342,
+      "demo": null,
+      "headline": {
+        "value": 46,
+        "label": "tests, framework stage",
+        "format": "int"
+      },
+      "metrics": [
+        {
+          "name": "Test count",
+          "value": 46,
+          "ci": null,
+          "target": null,
+          "status": "current",
+          "note": ""
+        }
+      ],
+      "finding": "The default evaluated model is a rule-based stub, not an LLM. Pass rates carry Wilson score intervals so small samples cannot masquerade as certainty. Framework stage, and labelled as such."
+    },
+    {
+      "id": "neurapilot",
+      "name": "NeuraPilot",
+      "slug": "neurapilot",
+      "domain": "retrieval",
+      "tagline": "agentic RAG tutoring engine",
+      "stack": "LangGraph · ChromaDB · Ollama",
+      "loc": 6609,
+      "demo": null,
+      "headline": {
+        "value": 0.595,
+        "label": "faithfulness, target 0.70",
+        "format": "num"
+      },
+      "metrics": [
+        {
+          "name": "Faithfulness",
+          "value": 0.595,
+          "ci": null,
+          "target": 0.7,
+          "status": "current",
+          "note": "Below my own target. Published anyway."
+        },
+        {
+          "name": "Answer relevance",
+          "value": 0.847,
+          "ci": null,
+          "target": null,
+          "status": "current",
+          "note": ""
+        },
+        {
+          "name": "Context precision",
+          "value": 0.437,
+          "ci": null,
+          "target": null,
+          "status": "current",
+          "note": "Retrieval is the weak stage."
+        }
+      ],
+      "finding": "The harness reported perfect faithfulness on every question, including a control the system answered from model knowledge rather than the documents. The score parser was reading the judge's sentence count and clamping to 1.0. Fixed the parser, implemented the grounding guard that had been an accepted-but-unused parameter, added regression tests that fail against the old code."
+    },
+    {
+      "id": "chronicguard",
+      "name": "ChronicGuard",
+      "slug": "chronicguard-ai",
+      "domain": "health",
+      "tagline": "patient message triage",
+      "stack": "TF-IDF · SBERT · ChromaDB",
+      "loc": 6457,
+      "demo": null,
+      "headline": {
+        "value": 0.92,
+        "label": "urgent-recall hard floor",
+        "format": "num"
+      },
+      "metrics": [
+        {
+          "name": "Urgent-case recall",
+          "value": null,
+          "ci": null,
+          "target": 0.92,
+          "status": "threshold-only",
+          "note": "The harness treats anything below 0.92 as a hard failure. Measured value not yet published."
+        }
+      ],
+      "finding": "A triage system that is well calibrated on average and misses urgent cases is worse than useless, so urgent-case recall is a hard gate rather than one number among many. Calibration is reported by Brier score. Trained on synthetic messages."
+    },
+    {
+      "id": "gi-lesion",
+      "name": "GI Lesion Screening",
+      "slug": "Esophageal-Cancer-Detection",
+      "domain": "health",
+      "tagline": "endoscopic image classification",
+      "stack": "EfficientNet-B3 · Grad-CAM · Kvasir v2",
+      "loc": null,
+      "demo": null,
+      "headline": {
+        "value": 0.991,
+        "label": "ROC-AUC, binary head",
+        "format": "num"
+      },
+      "metrics": [
+        {
+          "name": "Binary accuracy",
+          "value": 0.9544,
+          "ci": null,
+          "target": null,
+          "status": "current",
+          "note": ""
+        },
+        {
+          "name": "ROC-AUC",
+          "value": 0.991,
+          "ci": null,
+          "target": null,
+          "status": "current",
+          "note": ""
+        },
+        {
+          "name": "Cohen's kappa, 8-class head",
+          "value": 0.931,
+          "ci": null,
+          "target": null,
+          "status": "current",
+          "note": ""
+        }
+      ],
+      "finding": "Dual-head design, binary plus 8-class, with inverse-frequency weights on one head and focal loss on the other. Grad-CAM implemented directly with forward and backward hooks rather than a library."
+    },
+    {
+      "id": "voice-rag",
+      "name": "Offline Voice RAG",
+      "slug": "rag-adversarial-robustness-eval-harness",
+      "domain": "retrieval",
+      "tagline": "local speech-to-cited-answer",
+      "stack": "faster-whisper · BGE · Coqui VITS",
+      "loc": 3965,
+      "demo": null,
+      "headline": null,
+      "metrics": [],
+      "finding": "Two retrieval backends compared under measured latency, sparse TF-IDF against dense BGE-small with a cross-encoder reranker. Citation integrity is enforced in the RAG path, with a policy-injection blocklist and RBAC gating."
+    }
+  ]
+}

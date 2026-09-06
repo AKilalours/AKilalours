@@ -1,0 +1,48 @@
+name: Ask about a project
+description: Get the real evaluation numbers for any project, straight from the data file the bot reads.
+title: "[ask] "
+labels: ["ask"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A bot answers this within about a minute, reading `data/projects.json`. It will tell
+        you a number has not been published rather than estimating one.
+
+  - type: dropdown
+    id: project
+    attributes:
+      label: Which project
+      options:
+        - OpenDriveFM
+        - FORGE
+        - StreamLens
+        - Guardian Drive
+        - SafetyEval Lab
+        - NeuraPilot
+        - ChronicGuard
+        - GI Lesion Screening
+        - Offline Voice RAG
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you after
+      options:
+        - The evaluation numbers and how they were measured
+        - How a specific part is implemented
+        - Whether it would work for my use case
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      placeholder: |
+        e.g. How was the 0.764 AUROC measured, and what does the confidence interval cover?
+    validations:
+      required: true

@@ -1,0 +1,60 @@
+name: Dispute a number
+description: You think something I published is wrong, overstated, or measured badly. Say so.
+title: "[dispute] "
+labels: ["ask", "dispute"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is not a formality. Several projects on my profile exist because a harness
+        disagreed with a number I had already published, so an outside disagreement is
+        worth more to me than a star.
+
+        A bot replies within a minute with exactly what my data file claims and how it was
+        measured, so you are arguing with the real thing rather than with the README prose.
+
+  - type: dropdown
+    id: project
+    attributes:
+      label: Which project
+      options:
+        - OpenDriveFM
+        - FORGE
+        - StreamLens
+        - Guardian Drive
+        - SafetyEval Lab
+        - NeuraPilot
+        - ChronicGuard
+        - GI Lesion Screening
+        - Offline Voice RAG
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem
+      options:
+        - The number is wrong or does not reproduce
+        - The measurement method does not support the claim
+        - The evaluation set makes the number meaningless
+        - The claim is fine but the wording overstates it
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: What is wrong
+      placeholder: |
+        e.g. Bootstrapping over frames still leaves the 5 fault types correlated within a
+        frame, so the interval is narrower than it should be.
+    validations:
+      required: true
+
+  - type: input
+    id: reference
+    attributes:
+      label: Anything I should read (optional)
+      placeholder: a paper, a repo, a line number

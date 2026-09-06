@@ -1,0 +1,39 @@
+name: Answer a project question
+
+# Someone opens an issue through the "Ask about a project" or "Dispute a number" form;
+# this replies with the real numbers from data/projects.json, including the ones that are
+# unflattering or missing. It cannot invent a number, because it only ever reads that file.
+#
+# The trigger matches on the title prefix the issue forms set, not on a label, so this
+# works in a fresh repo with no labels configured. The bot creates the labels it applies.
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  answer:
+    if: >
+      startsWith(github.event.issue.title, '[ask]') ||
+      startsWith(github.event.issue.title, '[dispute]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Reply with the published measurements
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python .github/scripts/ask_reply.py
