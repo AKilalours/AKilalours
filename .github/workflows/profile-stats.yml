@@ -7,8 +7,11 @@
 # contributionsCollection directly, which is the same source the profile header uses,
 # so the badge matches exactly.
 #
-# Requires the GH_PAT secret: a classic token with read:user. Without it the workflow
-# still runs, but the count reverts to public-only.
+# Requires the GH_PAT secret: a classic token with read:user. This workflow FAILS
+# without it rather than falling back to the default token. The fallback was the bug:
+# GITHUB_TOKEN sees only public contributions, so the badge quietly published ~760
+# against a profile header of 4,593 and nothing on the page said so. A badge that
+# claims to match the header must fail loudly when it cannot.
 
 name: Profile stats
 
@@ -30,9 +33,15 @@ jobs:
     steps:
       - name: Query GitHub and write endpoint JSON
         env:
-          TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.GH_PAT }}
           LOGIN: ${{ github.repository_owner }}
         run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::GH_PAT is not set. Refusing to publish public-only numbers"
+            echo "::error::under a badge that claims to match the profile header."
+            exit 1
+          fi
+
           mkdir -p dist
           cat > query.json <<'JSON'
           {"query":"query($login:String!){user(login:$login){createdAt followers{totalCount} repositories(ownerAffiliations:OWNER,privacy:PUBLIC){totalCount} contributionsCollection{contributionCalendar{totalContributions} totalCommitContributions totalPullRequestContributions totalPullRequestReviewContributions restrictedContributionsCount}}}","variables":{"login":"LOGIN_PLACEHOLDER"}}
@@ -70,10 +79,21 @@ jobs:
           badge("repos.json",    "public repos",         u["repositories"]["totalCount"], "8b949e")
           badge("years.json",    "years on github",      years, "8b949e")
 
+          # A staleness badge. Without it, an expired PAT freezes every number above
+          # at its last good value with nothing on the profile indicating the date.
+          badge("updated.json", "stats updated",
+                datetime.date.today().isoformat(), "8b949e")
+
           print(f"\n  of which private/restricted: {private:,}")
+
+          # A PAT that has lost read:user, or a profile with "include private
+          # contributions" switched off, both surface here as zero. Either way the
+          # published total would silently drop by thousands, so stop.
           if private == 0:
-              print("  NOTE: private count is 0. Either there is no private activity, or GH_PAT")
-              print("        is missing and this ran on the public-only default token.")
+              print("::error::restrictedContributionsCount is 0. Either GH_PAT lost the")
+              print("::error::read:user scope, or 'include private contributions on my")
+              print("::error::profile' is off. Refusing to publish an undercount.")
+              sys.exit(1)
           PY
 
       - name: Publish to the output branch
