@@ -1,29 +1,52 @@
 name: 3D contribution calendar
+
 on:
   schedule:
     - cron: "15 3 * * *"
   workflow_dispatch:
+
 permissions:
   contents: write
+
 concurrency:
   group: profile-3d
   cancel-in-progress: false
+
 jobs:
   build:
     name: Generate 3D contribution SVGs
     runs-on: ubuntu-latest
     steps:
+      # The default GITHUB_TOKEN only sees PUBLIC contributions, which is why the
+      # calendar undercounts against the number on the profile page. A classic PAT
+      # with the read:user scope, stored as GH_PAT, makes private contributions count.
+      # Only aggregate totals are exposed: no repo names, no code.
+      #
+      # This used to fall back to GITHUB_TOKEN when GH_PAT was absent. That fallback
+      # is the bug: it does not fail, it just quietly renders the public-only number,
+      # so the calendar disagrees with the profile header and nothing says so.
+      #
+      # Checked through env, not through `if: secrets.GH_PAT == ''`. The secrets
+      # context is not dependably available in step-level conditionals, and a guard
+      # that silently never fires is worse than no guard.
+      - name: Fail loudly if the PAT is missing
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$GH_PAT" ]; then
+            echo "::error::GH_PAT is not set. The calendar would render public-only"
+            echo "::error::contributions and silently disagree with the profile header."
+            exit 1
+          fi
+
       - uses: actions/checkout@v4
+
       - name: Generate
         uses: yoshi389111/github-profile-3d-contrib@v0.9.3
         env:
-          # The default GITHUB_TOKEN only sees PUBLIC contributions, which is why the
-          # calendar undercounts against the number on the profile page. A classic PAT
-          # with the read:user scope, stored as the GH_PAT secret, makes private
-          # contributions count too. Only aggregate totals are exposed: no repo names,
-          # no code. Falls back to the default token if the secret is absent.
-          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           USERNAME: ${{ github.repository_owner }}
+
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"
