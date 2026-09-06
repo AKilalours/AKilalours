@@ -1,5 +1,10 @@
 # Renders the contribution graph as a snake eating the squares, and publishes the
 # result to a dedicated `output` branch so the generated SVGs never clutter main.
+#
+# The token matters. Platane/snk reads the contribution calendar through the GraphQL
+# API, and the default GITHUB_TOKEN only ever sees PUBLIC contributions. Without a PAT
+# the snake crawls over a nearly empty grid that does not match the profile header.
+# GH_PAT is a classic token with the read:user scope.
 
 name: Contribution snake
 
@@ -7,8 +12,6 @@ on:
   schedule:
     - cron: "40 3 * * *"
   workflow_dispatch:
-  push:
-    branches: [main]
 
 permissions:
   contents: write
@@ -21,11 +24,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Checked through env, not through `if: secrets.GH_PAT == ''`. The secrets
+      # context is not dependably available in step-level conditionals, and a guard
+      # that silently never fires is worse than no guard.
+      - name: Fail loudly if the PAT is missing
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$GH_PAT" ]; then
+            echo "::error::GH_PAT is not set. The snake would render public-only"
+            echo "::error::contributions and silently disagree with the profile header."
+            exit 1
+          fi
+
       - name: Generate
         uses: Platane/snk@v3
         id: snake
         with:
           github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ secrets.GH_PAT }}
           outputs: |
             dist/snake-dark.svg?palette=github-dark
             dist/snake-light.svg?palette=github-light
