@@ -1,0 +1,338 @@
+{
+  "generated": "2026-10-31T21:28+00:00",
+  "repos": [
+    {
+      "name": "cpg-intelligence-os",
+      "title": "CPG Intelligence OS",
+      "category": "data",
+      "reason": "catalog.json",
+      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
+      "url": "https://github.com/AKilalours/cpg-intelligence-os",
+      "demo": null
+    },
+    {
+      "name": "opendrivefm",
+      "title": "OpenDriveFM",
+      "category": "autonomy",
+      "reason": "catalog.json",
+      "blurb": "Camera-only multi-camera BEV occupancy on nuScenes, with a fault-injection trust harness.",
+      "url": "https://github.com/AKilalours/opendrivefm",
+      "demo": "https://huggingface.co/spaces/Akilalourdes/opendrivefm"
+    },
+    {
+      "name": "plumbline",
+      "title": "Plumbline",
+      "category": "data",
+      "reason": "catalog.json",
+      "blurb": "Customer data that checks its own answers: identity resolution, release gates, safe SQL.",
+      "url": "https://github.com/AKilalours/plumbline",
+      "demo": null
+    },
+    {
+      "name": "Gods_Eye",
+      "title": "God's Eye",
+      "category": "apps",
+      "reason": "catalog.json",
+      "blurb": "Live aircraft, ships, satellites and public cameras on a photoreal 3D globe.",
+      "url": "https://github.com/AKilalours/Gods_Eye",
+      "demo": null
+    },
+    {
+      "name": "Forge",
+      "title": "FORGE",
+      "category": "llm",
+      "reason": "catalog.json",
+      "blurb": "AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI.",
+      "url": "https://github.com/AKilalours/Forge",
+      "demo": "https://akilalours.github.io/Forge/"
+    },
+    {
+      "name": "streaming-canvas-search-ltr",
+      "title": "StreamLens",
+      "category": "search",
+      "reason": "catalog.json",
+      "blurb": "BM25 + FAISS hybrid retrieval, LightGBM LambdaRank, Kafka with graceful fallback.",
+      "url": "https://github.com/AKilalours/streaming-canvas-search-ltr",
+      "demo": null
+    },
+    {
+      "name": "pr-receipts",
+      "title": "pr-receipts",
+      "category": "trust",
+      "reason": "catalog.json",
+      "blurb": "Checks every claim in an AI-written pull request against what the diff shows.",
+      "url": "https://github.com/AKilalours/pr-receipts",
+      "demo": null
+    },
+    {
+      "name": "portfolio",
+      "title": "Portfolio",
+      "category": "apps",
+      "reason": "catalog.json",
+      "blurb": "Personal site with a Spline 3D keyboard where every keycap is a skill.",
+      "url": "https://github.com/AKilalours/portfolio",
+      "demo": "https://akilalourdesmiriyalafrancis.com"
+    },
+    {
+      "name": "Esophageal-Cancer-Detection",
+      "title": "GI Lesion Screening",
+      "category": "health",
+      "reason": "catalog.json",
+      "blurb": "EfficientNet-B3 dual-head classifier on Kvasir v2 with hand-written Grad-CAM.",
+      "url": "https://github.com/AKilalours/Esophageal-Cancer-Detection",
+      "demo": null
+    },
+    {
+      "name": "neurapilot",
+      "title": "NeuraPilot",
+      "category": "llm",
+      "reason": "catalog.json",
+      "blurb": "Agentic RAG tutor on LangGraph and ChromaDB, with an eval harness that caught its own bug.",
+      "url": "https://github.com/AKilalours/neurapilot",
+      "demo": null
+    },
+    {
+      "name": "guardian-drive",
+      "title": "Guardian Drive",
+      "category": "autonomy",
+      "reason": "catalog.json",
+      "blurb": "Driver-safety monitoring: from-scratch PointPillars, BEV encoder, physiological signals.",
+      "url": "https://github.com/AKilalours/guardian-drive",
+      "demo": "https://huggingface.co/spaces/Akilalourdes/guardian-drive-demo"
+    },
+    {
+      "name": "openpilot",
+      "title": "openpilot",
+      "category": "forks",
+      "reason": "fork",
+      "blurb": "openpilot is an operating system for robotics. Currently, it upgrades the driver assistance system on 300+ supported cars.",
+      "url": "https://github.com/AKilalours/openpilot",
+      "demo": "https://comma.ai/openpilot"
+    },
+    {
+      "name": "carla",
+      "title": "carla",
+      "category": "forks",
+      "reason": "fork",
+      "blurb": "Open-source simulator for autonomous driving research.",
+      "url": "https://github.com/AKilalours/carla",
+      "demo": "http://carla.org"
+    },
+    {
+      "name": "autoware",
+      "title": "autoware",
+      "category": "forks",
+      "reason": "fork",
+      "blurb": "Autoware - the world's leading open-source software project for autonomous driving",
+      "url": "https://github.com/AKilalours/autoware",
+      "demo": "https://www.autoware.org/"
+    },
+    {
+      "name": "Self-Driving-Cars-Specialization",
+      "title": "CARLA Motion Planning",
+      "category": "autonomy",
+      "reason": "catalog.json",
+      "blurb": "Motion planning from scratch in CARLA: behaviour planner, spiral paths, collision checks.",
+      "url": "https://github.com/AKilalours/Self-Driving-Cars-Specialization",
+      "demo": null
+    },
+    {
+      "name": "chronicguard-ai",
+      "title": "ChronicGuard",
+      "category": "health",
+      "reason": "catalog.json",
+      "blurb": "Patient-message triage with a hard urgent-recall floor and Brier-score calibration.",
+      "url": "https://github.com/AKilalours/chronicguard-ai",
+      "demo": null
+    },
+    {
+      "name": "FashionFinder",
+      "title": "FashionFinder",
+      "category": "search",
+      "reason": "catalog.json",
+      "blurb": "Visual product search over 44K items: ResNet18 embeddings, FAISS IVF, FastAPI.",
+      "url": "https://github.com/AKilalours/FashionFinder",
+      "demo": null
+    },
+    {
+      "name": "akila-safety-eval-lab",
+      "title": "SafetyEval Lab",
+      "category": "trust",
+      "reason": "catalog.json",
+      "blurb": "Typed eval framework for reward hacking, sycophancy and prompt injection.",
+      "url": "https://github.com/AKilalours/akila-safety-eval-lab",
+      "demo": null
+    },
+    {
+      "name": "courses",
+      "title": "courses",
+      "category": "forks",
+      "reason": "fork",
+      "blurb": "Anthropic's educational courses",
+      "url": "https://github.com/AKilalours/courses",
+      "demo": null
+    },
+    {
+      "name": "claude-code-security-review",
+      "title": "claude-code-security-review",
+      "category": "forks",
+      "reason": "fork",
+      "blurb": "An AI-powered security review GitHub Action using Claude to analyze code changes for security vulnerabilities.",
+      "url": "https://github.com/AKilalours/claude-code-security-review",
+      "demo": null
+    },
+    {
+      "name": "nuscenes-devkit",
+      "title": "nuscenes-devkit",
+      "category": "forks",
+      "reason": "fork",
+      "blurb": "The devkit of the nuScenes dataset.",
+      "url": "https://github.com/AKilalours/nuscenes-devkit",
+      "demo": "https://www.nuScenes.org"
+    },
+    {
+      "name": "rag-adversarial-robustness-eval-harness",
+      "title": "Offline Voice RAG",
+      "category": "llm",
+      "reason": "catalog.json",
+      "blurb": "Local speech-to-answer: faster-whisper ASR, BGE retrieval, Coqui TTS, cited answers.",
+      "url": "https://github.com/AKilalours/rag-adversarial-robustness-eval-harness",
+      "demo": null
+    },
+    {
+      "name": "talentra_copilot",
+      "title": "talentra_copilot",
+      "category": "forks",
+      "reason": "fork",
+      "blurb": "",
+      "url": "https://github.com/AKilalours/talentra_copilot",
+      "demo": null
+    },
+    {
+      "name": "IDEATHON_2022_ACFL",
+      "title": "Adaptive Quiz Coach",
+      "category": "apps",
+      "reason": "catalog.json",
+      "blurb": "ML-driven exam prep that picks each next question for the learner. Ideathon 2022.",
+      "url": "https://github.com/AKilalours/IDEATHON_2022_ACFL",
+      "demo": null
+    },
+    {
+      "name": "Sign-Language-Regonization-using-CNN-Algorithm-with-Meachine-Learning-Techniques-Paper",
+      "title": "Sign Language Recognition (paper)",
+      "category": "foundations",
+      "reason": "catalog.json",
+      "blurb": "Sign-Language-Regonization-using-CNN-Algorithm-with-Meachine-Learning-Techniques-Paper",
+      "url": "https://github.com/AKilalours/Sign-Language-Regonization-using-CNN-Algorithm-with-Meachine-Learning-Techniques-Paper",
+      "demo": null
+    },
+    {
+      "name": "StegoCloak",
+      "title": "StegoCloak",
+      "category": "trust",
+      "reason": "catalog.json",
+      "blurb": "Password-keyed steganography with AES-256-GCM and a CNN steganalysis check.",
+      "url": "https://github.com/AKilalours/StegoCloak",
+      "demo": null
+    },
+    {
+      "name": "Alcohol-detection-using-Decision-tree-and-neural-networks",
+      "title": "Substance Use Prediction",
+      "category": "health",
+      "reason": "catalog.json",
+      "blurb": "Decision tree, XGBoost and a neural net ensemble with SHAP explanations.",
+      "url": "https://github.com/AKilalours/Alcohol-detection-using-Decision-tree-and-neural-networks",
+      "demo": null
+    },
+    {
+      "name": "AI-Powered-Health-Risk-Prediction-System-for-Multi-Disease-Diagnosis",
+      "title": "Multi-Disease Risk",
+      "category": "health",
+      "reason": "catalog.json",
+      "blurb": "Screens 17 conditions from tabular records plus chest X-rays. Academic, not clinical.",
+      "url": "https://github.com/AKilalours/AI-Powered-Health-Risk-Prediction-System-for-Multi-Disease-Diagnosis",
+      "demo": null
+    },
+    {
+      "name": "noise-robust-kws-distress-detection",
+      "title": "Distress Keyword Spotting",
+      "category": "health",
+      "reason": "catalog.json",
+      "blurb": "Noise-robust detection of distress words like 'help' in real-world audio.",
+      "url": "https://github.com/AKilalours/noise-robust-kws-distress-detection",
+      "demo": null
+    },
+    {
+      "name": "Crypto-Risk-Bench",
+      "title": "Crypto Risk Bench",
+      "category": "data",
+      "reason": "catalog.json",
+      "blurb": "Crypto market risk metrics and walk-forward backtesting with an HTML dashboard.",
+      "url": "https://github.com/AKilalours/Crypto-Risk-Bench",
+      "demo": null
+    },
+    {
+      "name": "nuplan-devkit",
+      "title": "nuplan-devkit",
+      "category": "forks",
+      "reason": "fork",
+      "blurb": "The devkit of the nuPlan dataset.",
+      "url": "https://github.com/AKilalours/nuplan-devkit",
+      "demo": "https://www.nuplan.org"
+    },
+    {
+      "name": "Student-Performance-Using-Neural-Networks",
+      "title": "Student Performance NN",
+      "category": "foundations",
+      "reason": "catalog.json",
+      "blurb": "",
+      "url": "https://github.com/AKilalours/Student-Performance-Using-Neural-Networks",
+      "demo": null
+    },
+    {
+      "name": "Bayesian-Network-Inference-Problem",
+      "title": "Bayesian Network Inference",
+      "category": "foundations",
+      "reason": "catalog.json",
+      "blurb": "",
+      "url": "https://github.com/AKilalours/Bayesian-Network-Inference-Problem",
+      "demo": null
+    },
+    {
+      "name": "Image-Classification-Model-with-CNN",
+      "title": "CNN Image Classification",
+      "category": "foundations",
+      "reason": "catalog.json",
+      "blurb": "",
+      "url": "https://github.com/AKilalours/Image-Classification-Model-with-CNN",
+      "demo": null
+    },
+    {
+      "name": "wine-Quality-prediction-using-neural-networks",
+      "title": "Wine Quality NN",
+      "category": "foundations",
+      "reason": "catalog.json",
+      "blurb": "",
+      "url": "https://github.com/AKilalours/wine-Quality-prediction-using-neural-networks",
+      "demo": null
+    },
+    {
+      "name": "Heart-Disease-Prediction-Model-using-Linear-Regression-",
+      "title": "Heart Disease Regression",
+      "category": "foundations",
+      "reason": "catalog.json",
+      "blurb": "",
+      "url": "https://github.com/AKilalours/Heart-Disease-Prediction-Model-using-Linear-Regression-",
+      "demo": null
+    },
+    {
+      "name": "Hospital-Management-System-in-Java",
+      "title": "Hospital Management (Java)",
+      "category": "foundations",
+      "reason": "catalog.json",
+      "blurb": "",
+      "url": "https://github.com/AKilalours/Hospital-Management-System-in-Java",
+      "demo": null
+    }
+  ]
+}

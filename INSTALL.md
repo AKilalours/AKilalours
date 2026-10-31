@@ -65,6 +65,50 @@ the repo contradicts it.
 
 - **Hero:** edit constants at the top of `build_hero.py`, run `python build_hero.py`.
   Fixed seed, so output is reproducible.
-- **Graph:** edit the `REPOS` array in `docs/index.html`. Add entries as
-  `["Name", "domain", locOrNull, "repo-slug", "liveUrlOrNull"]`.
+- **Graph:** generated. Its `DOMAINS` and `REPOS` constants sit between
+  `// CATALOG:START` and `// CATALOG:END` and are rewritten by the catalog workflow.
+  Edit `data/catalog.json`, not the HTML.
 - **Contribution calendar:** regenerates itself nightly.
+
+## Repository catalog (auto-categorized)
+
+`.github/workflows/repo-catalog.yml` runs every six hours, on any push that touches
+`data/catalog.json`, and on demand from the Actions tab. It lists every public repo,
+places each in an area, and rewrites three generated blocks:
+
+| Block | Where | What |
+|---|---|---|
+| `<!-- REEL:START/END -->` | README | animated flagship reel, open buttons, demo GIF strip |
+| `<!-- CATALOG:START/END -->` | README | overview chart, one animated card per repo, by area |
+| `// CATALOG:START/END` | docs/index.html | the 3D graph's domains and nodes |
+
+Images go to `assets/generated/`; a per-run `?v=` query defeats GitHub's image cache.
+The workflow only commits when something other than the timestamp changed.
+
+**How a repo is placed**, first match wins:
+
+1. An entry under `repos` in `data/catalog.json` (title, blurb, metric, demo).
+2. A GitHub topic `cat-<id>` on the repo, e.g. `cat-autonomy`, `cat-llm`, `cat-health`.
+   This is the quickest fix and needs no edit here.
+3. Forks go to `forks`. Tiny repos with no README go to `foundations`.
+4. Keyword scoring over name, description, topics and README. A close call between
+   two areas is not guessed: it is parked.
+5. Otherwise the repo appears under **Just shipped, not yet categorized** at the top,
+   with a NEW badge, and the run summary lists it.
+
+On the 29 current non-fork repos, with every hand entry removed, the keyword stage
+put 21 in the right area, parked 7 for review, and put 1 in a defensible but
+different area (distress keyword spotting scored as safety, filed as health). So for
+a brand-new repo expect the right section about 3 times in 4, and a visible "not
+sorted yet" rather than a wrong section most of the rest of the time. 29 repos is a
+small sample; treat those numbers as a sanity check, not a benchmark.
+
+**To hide a repo**, add its name to `hide`. **To change the reel or demo GIFs**, edit
+`reel` and `demos`. Demo GIFs live in `assets/demos/`; keep each under about 2 MB or
+GitHub's image proxy may refuse it.
+
+**Tests:** `python .github/scripts/test_build_catalog.py` (also runs in the workflow
+before anything is generated).
+
+**Local dry run:** `python .github/scripts/build_catalog.py --dry-run` with
+`GITHUB_TOKEN` set.

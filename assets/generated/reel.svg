@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="292" viewBox="0 0 860 292" role="img" aria-label="Animated reel of flagship projects">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+.chip{font-size:12px;font-weight:700;letter-spacing:.3px} .title{font-size:38px;font-weight:800;fill:#e6edf3}
+.desc{font-size:16px;fill:#9198a1} .metric{font-size:17px;font-weight:700} .idx{font-size:26px;font-weight:800}
+.slide,.dot{opacity:0;animation:show 24s infinite}
+.prog{transform-box:fill-box;transform-origin:left;transform:scaleX(0);animation:prog 24s linear infinite}
+.ring{stroke-dashoffset:365;animation:ring 24s ease-out infinite}
+@keyframes show{0%{opacity:0}1.50%{opacity:1}15.17%{opacity:1}16.67%,100%{opacity:0}}
+@keyframes prog{0%{transform:scaleX(0)}16.67%,100%{transform:scaleX(1)}}
+@keyframes ring{0%{stroke-dashoffset:365}10.00%,100%{stroke-dashoffset:60}}
+@media (prefers-reduced-motion:reduce){.slide{animation:none}.slide:first-of-type{opacity:1}}
+</style>
+<rect width="860" height="292" rx="16" fill="#0d1117"/><rect x=".5" y=".5" width="859" height="291" rx="16" fill="none" stroke="#30363d"/>
+<g class="slide" style="animation-delay:0s">
+<rect x="40" y="40" width="262" height="24" rx="12" fill="#58a6ff" fill-opacity=".16" stroke="#58a6ff" stroke-opacity=".5"/>
+<text x="52" y="57" class="chip" fill="#58a6ff">Autonomous driving &amp; 3D perception</text>
+<text x="40" y="112" class="title">OpenDriveFM</text>
+<text x="40" y="146" class="desc">Camera-only multi-camera BEV occupancy on nuScenes, with a</text><text x="40" y="168" class="desc">fault-injection trust harness.</text>
+<text x="40" y="222" class="metric" fill="#58a6ff">AUROC 0.434 → 0.764</text>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#21262d"/>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#58a6ff" class="prog" style="animation-delay:0s"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#58a6ff" stroke-opacity=".25" stroke-width="2"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linecap="round" stroke-dasharray="365" class="ring" style="animation-delay:0s" transform="rotate(-90 760 120)"/>
+<text x="760" y="128" text-anchor="middle" class="idx" fill="#58a6ff">01</text>
+</g><g class="slide" style="animation-delay:4s">
+<rect x="40" y="40" width="290" height="24" rx="12" fill="#39c5cf" fill-opacity=".16" stroke="#39c5cf" stroke-opacity=".5"/>
+<text x="52" y="57" class="chip" fill="#39c5cf">Data platforms &amp; decision intelligence</text>
+<text x="40" y="112" class="title">Plumbline</text>
+<text x="40" y="146" class="desc">Customer data that checks its own answers: identity resolution,</text><text x="40" y="168" class="desc">release gates, safe SQL.</text>
+<text x="40" y="222" class="metric" fill="#39c5cf">identity F1 0.991 (synthetic)</text>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#21262d"/>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#39c5cf" class="prog" style="animation-delay:4s"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#39c5cf" stroke-opacity=".25" stroke-width="2"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#39c5cf" stroke-width="4" stroke-linecap="round" stroke-dasharray="365" class="ring" style="animation-delay:4s" transform="rotate(-90 760 120)"/>
+<text x="760" y="128" text-anchor="middle" class="idx" fill="#39c5cf">02</text>
+</g><g class="slide" style="animation-delay:8s">
+<rect x="40" y="40" width="199" height="24" rx="12" fill="#a371f7" fill-opacity=".16" stroke="#a371f7" stroke-opacity=".5"/>
+<text x="52" y="57" class="chip" fill="#a371f7">LLM systems, RAG &amp; agents</text>
+<text x="40" y="112" class="title">NeuraPilot</text>
+<text x="40" y="146" class="desc">Agentic RAG tutor on LangGraph and ChromaDB, with an eval</text><text x="40" y="168" class="desc">harness that caught its own bug.</text>
+<text x="40" y="222" class="metric" fill="#a371f7">faithfulness 0.595 (goal 0.70)</text>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#21262d"/>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#a371f7" class="prog" style="animation-delay:8s"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#a371f7" stroke-opacity=".25" stroke-width="2"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#a371f7" stroke-width="4" stroke-linecap="round" stroke-dasharray="365" class="ring" style="animation-delay:8s" transform="rotate(-90 760 120)"/>
+<text x="760" y="128" text-anchor="middle" class="idx" fill="#a371f7">03</text>
+</g><g class="slide" style="animation-delay:12s">
+<rect x="40" y="40" width="248" height="24" rx="12" fill="#3fb950" fill-opacity=".16" stroke="#3fb950" stroke-opacity=".5"/>
+<text x="52" y="57" class="chip" fill="#3fb950">Search, ranking &amp; recommendation</text>
+<text x="40" y="112" class="title">StreamLens</text>
+<text x="40" y="146" class="desc">BM25 + FAISS hybrid retrieval, LightGBM LambdaRank, Kafka with</text><text x="40" y="168" class="desc">graceful fallback.</text>
+<text x="40" y="222" class="metric" fill="#3fb950">3-stage ranking</text>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#21262d"/>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#3fb950" class="prog" style="animation-delay:12s"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#3fb950" stroke-opacity=".25" stroke-width="2"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#3fb950" stroke-width="4" stroke-linecap="round" stroke-dasharray="365" class="ring" style="animation-delay:12s" transform="rotate(-90 760 120)"/>
+<text x="760" y="128" text-anchor="middle" class="idx" fill="#3fb950">04</text>
+</g><g class="slide" style="animation-delay:16s">
+<rect x="40" y="40" width="192" height="24" rx="12" fill="#ff7b72" fill-opacity=".16" stroke="#ff7b72" stroke-opacity=".5"/>
+<text x="52" y="57" class="chip" fill="#ff7b72">Healthcare &amp; clinical AI</text>
+<text x="40" y="112" class="title">GI Lesion Screening</text>
+<text x="40" y="146" class="desc">EfficientNet-B3 dual-head classifier on Kvasir v2 with</text><text x="40" y="168" class="desc">hand-written Grad-CAM.</text>
+<text x="40" y="222" class="metric" fill="#ff7b72">ROC-AUC 0.991 on Kvasir v2</text>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#21262d"/>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#ff7b72" class="prog" style="animation-delay:16s"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#ff7b72" stroke-opacity=".25" stroke-width="2"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#ff7b72" stroke-width="4" stroke-linecap="round" stroke-dasharray="365" class="ring" style="animation-delay:16s" transform="rotate(-90 760 120)"/>
+<text x="760" y="128" text-anchor="middle" class="idx" fill="#ff7b72">05</text>
+</g><g class="slide" style="animation-delay:20s">
+<rect x="40" y="40" width="269" height="24" rx="12" fill="#db61a2" fill-opacity=".16" stroke="#db61a2" stroke-opacity=".5"/>
+<text x="52" y="57" class="chip" fill="#db61a2">Interactive apps &amp; 3D visualization</text>
+<text x="40" y="112" class="title">God&#x27;s Eye</text>
+<text x="40" y="146" class="desc">Live aircraft, ships, satellites and public cameras on a</text><text x="40" y="168" class="desc">photoreal 3D globe.</text>
+<text x="40" y="222" class="metric" fill="#db61a2">co-built with Akilan</text>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#21262d"/>
+<rect x="40" y="244" width="780" height="3" rx="1.5" fill="#db61a2" class="prog" style="animation-delay:20s"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#db61a2" stroke-opacity=".25" stroke-width="2"/>
+<circle cx="760" cy="120" r="58" fill="none" stroke="#db61a2" stroke-width="4" stroke-linecap="round" stroke-dasharray="365" class="ring" style="animation-delay:20s" transform="rotate(-90 760 120)"/>
+<text x="760" y="128" text-anchor="middle" class="idx" fill="#db61a2">06</text>
+</g>
+<circle cx="385" cy="276" r="4" fill="#30363d"/><circle cx="385" cy="276" r="4" fill="#e6edf3" class="dot" style="animation-delay:0s"/><circle cx="403" cy="276" r="4" fill="#30363d"/><circle cx="403" cy="276" r="4" fill="#e6edf3" class="dot" style="animation-delay:4s"/><circle cx="421" cy="276" r="4" fill="#30363d"/><circle cx="421" cy="276" r="4" fill="#e6edf3" class="dot" style="animation-delay:8s"/><circle cx="439" cy="276" r="4" fill="#30363d"/><circle cx="439" cy="276" r="4" fill="#e6edf3" class="dot" style="animation-delay:12s"/><circle cx="457" cy="276" r="4" fill="#30363d"/><circle cx="457" cy="276" r="4" fill="#e6edf3" class="dot" style="animation-delay:16s"/><circle cx="475" cy="276" r="4" fill="#30363d"/><circle cx="475" cy="276" r="4" fill="#e6edf3" class="dot" style="animation-delay:20s"/>
+</svg>

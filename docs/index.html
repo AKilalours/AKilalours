@@ -90,40 +90,51 @@
 // working tree (excluding virtualenvs, node_modules and site-packages).
 // Repos without a measured count carry loc:null and render at the floor size.
 // ---------------------------------------------------------------------------
+// CATALOG:START
 const DOMAINS = {
-  perception: { label: "Autonomous driving & perception", color: 0x58a6ff },
-  retrieval:  { label: "Retrieval, RAG & agents",         color: 0x7ee787 },
-  search:     { label: "Search, ranking & recommendation", color: 0xd2a8ff },
-  health:     { label: "Healthcare & medical AI",          color: 0xff7b72 },
-  safety:     { label: "Safety & evaluation",              color: 0xf2cc60 },
-  other:      { label: "Systems, security & web",          color: 0x8b949e },
+  autonomy: { label: "Autonomous driving & 3D perception", color: 0x58a6ff },
+  llm: { label: "LLM systems, RAG & agents", color: 0xa371f7 },
+  search: { label: "Search, ranking & recommendation", color: 0x3fb950 },
+  health: { label: "Healthcare & clinical AI", color: 0xff7b72 },
+  trust: { label: "AI safety, evaluation & security", color: 0xf2cc60 },
+  data: { label: "Data platforms & decision intelligence", color: 0x39c5cf },
+  apps: { label: "Interactive apps & 3D visualization", color: 0xdb61a2 },
+  foundations: { label: "Coursework, papers & foundations", color: 0x8b949e },
 };
 
 const REPOS = [
-  // name, domain, measured python LOC, repo slug, live demo
-  ["OpenDriveFM",        "perception", 20351, "opendrivefm",              "https://huggingface.co/spaces/Akilalourdes/opendrivefm"],
-  ["Guardian Drive",     "perception", 17364, "guardian-drive",           "https://huggingface.co/spaces/Akilalourdes/guardian-drive-demo"],
-  ["Self-Driving Cars",  "perception", null,  "Self-Driving-Cars-Specialization", null],
-
-  ["FORGE",              "retrieval",  27574, "Panagram_Forge",           null],
-  ["NeuraPilot",         "retrieval",  6609,  "neurapilot",               null],
-  ["Offline Voice RAG",  "retrieval",  3965,  "rag-adversarial-robustness-eval-harness", null],
-
-  ["StreamLens",         "search",     28015, "streaming-canvas-search-ltr", null],
-  ["FashionFinder",      "search",     null,  "FashionFinder",            null],
-
-  ["ChronicGuard",       "health",     6457,  "chronicguard-ai",          null],
-  ["GI Lesion Screening","health",     null,  "Esophageal-Cancer-Detection", null],
-  ["Health Risk System", "health",     null,  "AI-Powered-Health-Risk-Prediction-System-for-Multi-Disease-Diagnosis", null],
-  ["Distress KWS",       "health",     null,  "noise-robust-kws-distress-detection", null],
-
-  ["SafetyEval Lab",     "safety",     16342, "akila-safety-eval-lab",    null],
-  ["Crypto Risk Bench",  "safety",     null,  "Crypto-Risk-Bench",        null],
-
-  ["StegoCloak",         "other",      null,  "StegoCloak",               null],
-  ["Portfolio",          "other",      null,  "portfolio",                null],
-  ["Adaptive Quiz Coach","other",      null,  "IDEATHON_2022_ACFL",       null],
+  // title, category, measured python LOC, repo slug, live demo
+  ["CPG Intelligence OS", "data", null, "cpg-intelligence-os", null],
+  ["OpenDriveFM", "autonomy", 20351, "opendrivefm", "https://huggingface.co/spaces/Akilalourdes/opendrivefm"],
+  ["Plumbline", "data", null, "plumbline", null],
+  ["God's Eye", "apps", null, "Gods_Eye", null],
+  ["FORGE", "llm", 27574, "Forge", "https://akilalours.github.io/Forge/"],
+  ["StreamLens", "search", 28015, "streaming-canvas-search-ltr", null],
+  ["pr-receipts", "trust", null, "pr-receipts", null],
+  ["Portfolio", "apps", null, "portfolio", "https://akilalourdesmiriyalafrancis.com"],
+  ["GI Lesion Screening", "health", null, "Esophageal-Cancer-Detection", null],
+  ["NeuraPilot", "llm", 6609, "neurapilot", null],
+  ["Guardian Drive", "autonomy", 17364, "guardian-drive", "https://huggingface.co/spaces/Akilalourdes/guardian-drive-demo"],
+  ["CARLA Motion Planning", "autonomy", null, "Self-Driving-Cars-Specialization", null],
+  ["ChronicGuard", "health", 6457, "chronicguard-ai", null],
+  ["FashionFinder", "search", null, "FashionFinder", null],
+  ["SafetyEval Lab", "trust", 16342, "akila-safety-eval-lab", null],
+  ["Offline Voice RAG", "llm", 3965, "rag-adversarial-robustness-eval-harness", null],
+  ["Adaptive Quiz Coach", "apps", null, "IDEATHON_2022_ACFL", null],
+  ["Sign Language Recognition (paper)", "foundations", null, "Sign-Language-Regonization-using-CNN-Algorithm-with-Meachine-Learning-Techniques-Paper", null],
+  ["StegoCloak", "trust", null, "StegoCloak", null],
+  ["Substance Use Prediction", "health", null, "Alcohol-detection-using-Decision-tree-and-neural-networks", null],
+  ["Multi-Disease Risk", "health", null, "AI-Powered-Health-Risk-Prediction-System-for-Multi-Disease-Diagnosis", null],
+  ["Distress Keyword Spotting", "health", null, "noise-robust-kws-distress-detection", null],
+  ["Crypto Risk Bench", "data", null, "Crypto-Risk-Bench", null],
+  ["Student Performance NN", "foundations", null, "Student-Performance-Using-Neural-Networks", null],
+  ["Bayesian Network Inference", "foundations", null, "Bayesian-Network-Inference-Problem", null],
+  ["CNN Image Classification", "foundations", null, "Image-Classification-Model-with-CNN", null],
+  ["Wine Quality NN", "foundations", null, "wine-Quality-prediction-using-neural-networks", null],
+  ["Heart Disease Regression", "foundations", null, "Heart-Disease-Prediction-Model-using-Linear-Regression-", null],
+  ["Hospital Management (Java)", "foundations", null, "Hospital-Management-System-in-Java", null],
 ];
+// CATALOG:END
 
 const USER = "AKilalours";
 const app = document.getElementById("app");

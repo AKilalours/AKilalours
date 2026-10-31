@@ -1,0 +1,230 @@
+{
+  "_comment": "Source of truth for the auto-generated repository catalog in README.md. The Action in .github/workflows/repo-catalog.yml lists every public repo, classifies it, and regenerates the catalog. A repo NOT listed under `repos` is classified automatically: GitHub topic `cat-<id>` first, then keyword scoring over name, description, topics and README, then the `new` bucket. Edit here, never in the generated SVGs or between the CATALOG markers in README.md.",
+
+  "owner": "AKilalours",
+  "new_badge_days": 21,
+  "active_days": 14,
+
+  "categories": [
+    {
+      "id": "autonomy",
+      "label": "Autonomous driving & 3D perception",
+      "blurb": "Multi-camera BEV, LiDAR detection, motion planning, simulation.",
+      "color": "#58a6ff",
+      "layout": "cards",
+      "keywords": ["autonomous", "self-driving", "driving", "bev", "nuscenes", "lidar", "pointpillars", "carla", "occupancy", "perception", "trajectory", "motion planning", "kitti", "argoverse", "waymo", "adas", "slam", "odometry"]
+    },
+    {
+      "id": "llm",
+      "label": "LLM systems, RAG & agents",
+      "blurb": "Retrieval-augmented generation, agent graphs, NLP classifiers, speech.",
+      "color": "#a371f7",
+      "layout": "cards",
+      "keywords": ["rag", "llm", "langgraph", "langchain", "agent", "agentic", "chromadb", "ollama", "retrieval-augmented", "deberta", "transformer", "whisper", "tts", "chatbot", "copilot", "prompt", "gpt", "claude", "nlp", "text detection"]
+    },
+    {
+      "id": "search",
+      "label": "Search, ranking & recommendation",
+      "blurb": "Hybrid retrieval, learning-to-rank, ANN indexes, visual search.",
+      "color": "#3fb950",
+      "layout": "cards",
+      "keywords": ["search", "ranking", "learning-to-rank", "ltr", "lambdarank", "bm25", "faiss", "recommendation", "recommender", "similarity", "ann", "reranker", "ndcg", "visual search"]
+    },
+    {
+      "id": "health",
+      "label": "Healthcare & clinical AI",
+      "blurb": "Clinical NLP, medical imaging, risk prediction, safety-critical signals.",
+      "color": "#ff7b72",
+      "layout": "cards",
+      "keywords": ["health", "clinical", "patient", "medical", "disease", "cancer", "lesion", "endoscopy", "kvasir", "x-ray", "triage", "hospital", "diagnosis", "care", "ehr", "distress", "physiological", "ecg"]
+    },
+    {
+      "id": "trust",
+      "label": "AI safety, evaluation & security",
+      "blurb": "Eval harnesses, confidence intervals, claim checking, cryptography.",
+      "color": "#f2cc60",
+      "layout": "cards",
+      "keywords": ["safety", "evaluation", "eval", "sycophancy", "reward hacking", "prompt injection", "red team", "security", "encryption", "aes", "steganography", "adversarial", "robustness", "audit", "verification", "benchmark harness"]
+    },
+    {
+      "id": "data",
+      "label": "Data platforms & decision intelligence",
+      "blurb": "Entity resolution, document AI, forecasting, risk analytics.",
+      "color": "#39c5cf",
+      "layout": "cards",
+      "keywords": ["data platform", "pipeline", "etl", "warehouse", "postgres", "entity resolution", "identity", "forecast", "forecasting", "backtest", "risk metrics", "finance", "financial", "invoice", "reconciliation", "analytics", "dbt", "spark", "observability"]
+    },
+    {
+      "id": "apps",
+      "label": "Interactive apps & 3D visualization",
+      "blurb": "Live globes, 3D web, adaptive learning apps.",
+      "color": "#db61a2",
+      "layout": "cards",
+      "keywords": ["three.js", "threejs", "cesium", "globe", "3d", "webgl", "react", "next.js", "portfolio", "website", "frontend", "dashboard", "visualization", "quiz", "game"]
+    },
+    {
+      "id": "foundations",
+      "label": "Coursework, papers & foundations",
+      "blurb": "Earlier academic work and paper write-ups.",
+      "color": "#8b949e",
+      "layout": "chips",
+      "noun": "coursework repos",
+      "keywords": ["coursework", "assignment", "homework", "paper", "linear regression", "bayesian", "student performance", "wine quality", "mnist", "cifar"]
+    },
+    {
+      "id": "forks",
+      "label": "Open source I study and build on",
+      "blurb": "Forks of upstream projects, kept for reading and experiments.",
+      "color": "#6e7681",
+      "layout": "chips",
+      "noun": "forks",
+      "keywords": []
+    },
+    {
+      "id": "new",
+      "label": "Just shipped, not yet categorized",
+      "blurb": "Picked up automatically. Add a `cat-<area>` topic to the repo to place it.",
+      "color": "#ffa657",
+      "layout": "cards",
+      "keywords": []
+    }
+  ],
+
+  "rules": {
+    "forks_category": "forks",
+    "tiny_repo_kb": 10,
+    "tiny_category": "foundations",
+    "min_keyword_score": 3,
+    "body_cap": 4,
+    "min_margin": 1.6,
+    "fallback_category": "new"
+  },
+
+  "hide": [
+    "AKilalours",
+    "observability-sandbox"
+  ],
+
+  "reel": ["opendrivefm", "plumbline", "neurapilot", "streaming-canvas-search-ltr", "Esophageal-Cancer-Detection", "Gods_Eye"],
+
+  "demos": [
+    {"repo": "opendrivefm", "file": "assets/demos/opendrivefm.gif", "caption": "OpenDriveFM: occupancy on a held-out nuScenes scene"},
+    {"repo": "plumbline",   "file": "assets/demos/plumbline.gif",   "caption": "Plumbline: a false merge caught, approved, fixed"},
+    {"repo": "Gods_Eye",    "file": "assets/demos/gods-eye.gif",    "caption": "God's Eye: live public data on a 3D globe"}
+  ],
+
+  "repos": {
+    "opendrivefm": {
+      "category": "autonomy", "title": "OpenDriveFM",
+      "blurb": "Camera-only multi-camera BEV occupancy on nuScenes, with a fault-injection trust harness.",
+      "metric": "AUROC 0.434 \u2192 0.764", "demo": "https://huggingface.co/spaces/Akilalourdes/opendrivefm", "loc": 20351
+    },
+    "guardian-drive": {
+      "category": "autonomy", "title": "Guardian Drive",
+      "blurb": "Driver-safety monitoring: from-scratch PointPillars, BEV encoder, physiological signals.",
+      "metric": "co-built with Akilan", "demo": "https://huggingface.co/spaces/Akilalourdes/guardian-drive-demo", "loc": 17364
+    },
+    "Self-Driving-Cars-Specialization": {
+      "category": "autonomy", "title": "CARLA Motion Planning",
+      "blurb": "Motion planning from scratch in CARLA: behaviour planner, spiral paths, collision checks.",
+      "metric": "co-built with Akilan"
+    },
+    "Forge": {
+      "category": "llm", "title": "FORGE",
+      "blurb": "AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI.",
+      "metric": "66 tests", "loc": 27574
+    },
+    "neurapilot": {
+      "category": "llm", "title": "NeuraPilot",
+      "blurb": "Agentic RAG tutor on LangGraph and ChromaDB, with an eval harness that caught its own bug.",
+      "metric": "faithfulness 0.595 (goal 0.70)", "loc": 6609
+    },
+    "rag-adversarial-robustness-eval-harness": {
+      "category": "llm", "title": "Offline Voice RAG",
+      "blurb": "Local speech-to-answer: faster-whisper ASR, BGE retrieval, Coqui TTS, cited answers.",
+      "loc": 3965
+    },
+    "streaming-canvas-search-ltr": {
+      "category": "search", "title": "StreamLens",
+      "blurb": "BM25 + FAISS hybrid retrieval, LightGBM LambdaRank, Kafka with graceful fallback.",
+      "metric": "3-stage ranking", "loc": 28015
+    },
+    "FashionFinder": {
+      "category": "search", "title": "FashionFinder",
+      "blurb": "Visual product search over 44K items: ResNet18 embeddings, FAISS IVF, FastAPI.",
+      "metric": "co-built with Akilan"
+    },
+    "chronicguard-ai": {
+      "category": "health", "title": "ChronicGuard",
+      "blurb": "Patient-message triage with a hard urgent-recall floor and Brier-score calibration.",
+      "metric": "urgent recall gate 0.92", "loc": 6457
+    },
+    "Esophageal-Cancer-Detection": {
+      "category": "health", "title": "GI Lesion Screening",
+      "blurb": "EfficientNet-B3 dual-head classifier on Kvasir v2 with hand-written Grad-CAM.",
+      "metric": "ROC-AUC 0.991 on Kvasir v2"
+    },
+    "AI-Powered-Health-Risk-Prediction-System-for-Multi-Disease-Diagnosis": {
+      "category": "health", "title": "Multi-Disease Risk",
+      "blurb": "Screens 17 conditions from tabular records plus chest X-rays. Academic, not clinical."
+    },
+    "noise-robust-kws-distress-detection": {
+      "category": "health", "title": "Distress Keyword Spotting",
+      "blurb": "Noise-robust detection of distress words like 'help' in real-world audio."
+    },
+    "Alcohol-detection-using-Decision-tree-and-neural-networks": {
+      "category": "health", "title": "Substance Use Prediction",
+      "blurb": "Decision tree, XGBoost and a neural net ensemble with SHAP explanations."
+    },
+    "akila-safety-eval-lab": {
+      "category": "trust", "title": "SafetyEval Lab",
+      "blurb": "Typed eval framework for reward hacking, sycophancy and prompt injection.",
+      "metric": "Wilson CIs, 46 tests", "loc": 16342
+    },
+    "pr-receipts": {
+      "category": "trust", "title": "pr-receipts",
+      "blurb": "Checks every claim in an AI-written pull request against what the diff shows."
+    },
+    "StegoCloak": {
+      "category": "trust", "title": "StegoCloak",
+      "blurb": "Password-keyed steganography with AES-256-GCM and a CNN steganalysis check."
+    },
+    "plumbline": {
+      "category": "data", "title": "Plumbline",
+      "blurb": "Customer data that checks its own answers: identity resolution, release gates, safe SQL.",
+      "metric": "identity F1 0.991 (synthetic)"
+    },
+    "cpg-intelligence-os": {
+      "category": "data", "title": "CPG Intelligence OS",
+      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
+      "metric": "phase 2 of 6"
+    },
+    "Crypto-Risk-Bench": {
+      "category": "data", "title": "Crypto Risk Bench",
+      "blurb": "Crypto market risk metrics and walk-forward backtesting with an HTML dashboard."
+    },
+    "Gods_Eye": {
+      "category": "apps", "title": "God's Eye",
+      "blurb": "Live aircraft, ships, satellites and public cameras on a photoreal 3D globe.",
+      "metric": "co-built with Akilan"
+    },
+    "portfolio": {
+      "category": "apps", "title": "Portfolio",
+      "blurb": "Personal site with a Spline 3D keyboard where every keycap is a skill.",
+      "demo": "https://akilalourdesmiriyalafrancis.com"
+    },
+    "IDEATHON_2022_ACFL": {
+      "category": "apps", "title": "Adaptive Quiz Coach",
+      "blurb": "ML-driven exam prep that picks each next question for the learner. Ideathon 2022."
+    },
+    "Sign-Language-Regonization-using-CNN-Algorithm-with-Meachine-Learning-Techniques-Paper": {
+      "category": "foundations", "title": "Sign Language Recognition (paper)"
+    },
+    "Student-Performance-Using-Neural-Networks": {"category": "foundations", "title": "Student Performance NN"},
+    "Bayesian-Network-Inference-Problem": {"category": "foundations", "title": "Bayesian Network Inference"},
+    "Image-Classification-Model-with-CNN": {"category": "foundations", "title": "CNN Image Classification"},
+    "wine-Quality-prediction-using-neural-networks": {"category": "foundations", "title": "Wine Quality NN"},
+    "Heart-Disease-Prediction-Model-using-Linear-Regression-": {"category": "foundations", "title": "Heart Disease Regression"},
+    "Hospital-Management-System-in-Java": {"category": "foundations", "title": "Hospital Management (Java)"}
+  }
+}

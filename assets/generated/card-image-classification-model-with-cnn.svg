@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="128" viewBox="0 0 420 128" role="img" aria-label="CNN Image Classification">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+.t{font-size:16px;font-weight:600;fill:#e6edf3} .d{font-size:12.5px;fill:#9198a1}
+.f{font-size:12px;fill:#9198a1} .m{font-size:11px;font-weight:600} .b{font-size:10px;font-weight:700;fill:#0d1117}
+.card{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.bar{transform-origin:0 0;animation:grow 1.1s .25s cubic-bezier(.2,.7,.2,1) both}
+.pulse{transform-origin:398px 24px;animation:ping 1.8s ease-out infinite}
+.pop{animation:pop 2.4s ease-in-out infinite}
+.sheen{animation:sheen 6s 1.2s ease-in-out infinite}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+@keyframes pop{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes sheen{0%{transform:translateX(-160px)}35%,100%{transform:translateX(620px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><clipPath id="c"><rect x=".5" y=".5" width="419" height="127" rx="12"/></clipPath>
+<linearGradient id="s" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<g class="card"><g clip-path="url(#c)">
+<rect width="420" height="128" fill="#0d1117"/>
+<rect class="sheen" x="0" y="0" width="120" height="128" fill="url(#s)"/>
+<rect class="bar" x="0" y="0" width="5" height="128" fill="#8b949e"/>
+</g>
+<rect x=".5" y=".5" width="419" height="127" rx="12" fill="none" stroke="#30363d"/>
+<text x="24" y="30" class="t">CNN Image Classification</text>
+<text x="24" y="58" class="d">No description yet.</text>
+<circle cx="30" cy="107" r="5" fill="#3572A5"/><text x="40" y="111" class="f">Python</text><text x="90" y="111" class="f">&#9733; 1</text><text x="120" y="111" class="f">May 2025</text>
+</g></svg>
