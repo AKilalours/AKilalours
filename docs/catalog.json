@@ -1,6 +1,15 @@
 {
-  "generated": "2026-11-01T13:25+00:00",
+  "generated": "2026-11-01T22:02+00:00",
   "repos": [
+    {
+      "name": "opendrivefm",
+      "title": "OpenDriveFM",
+      "category": "autonomy",
+      "reason": "catalog.json",
+      "blurb": "Camera-only multi-camera BEV occupancy on nuScenes, with a fault-injection trust harness.",
+      "url": "https://github.com/AKilalours/opendrivefm",
+      "demo": "https://huggingface.co/spaces/Akilalourdes/opendrivefm"
+    },
     {
       "name": "Forge",
       "title": "FORGE",
@@ -36,15 +45,6 @@
       "blurb": "Customer data that checks its own answers: identity resolution, release gates, safe SQL.",
       "url": "https://github.com/AKilalours/plumbline",
       "demo": null
-    },
-    {
-      "name": "opendrivefm",
-      "title": "OpenDriveFM",
-      "category": "autonomy",
-      "reason": "catalog.json",
-      "blurb": "Camera-only multi-camera BEV occupancy on nuScenes, with a fault-injection trust harness.",
-      "url": "https://github.com/AKilalours/opendrivefm",
-      "demo": "https://huggingface.co/spaces/Akilalourdes/opendrivefm"
     },
     {
       "name": "Gods_Eye",
