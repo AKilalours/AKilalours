@@ -1,6 +1,15 @@
 {
-  "generated": "2026-11-01T06:06+00:00",
+  "generated": "2026-11-01T13:25+00:00",
   "repos": [
+    {
+      "name": "Forge",
+      "title": "FORGE",
+      "category": "llm",
+      "reason": "catalog.json",
+      "blurb": "AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI.",
+      "url": "https://github.com/AKilalours/Forge",
+      "demo": "https://akilalours.github.io/Forge/"
+    },
     {
       "name": "streaming-canvas-search-ltr",
       "title": "StreamLens",
@@ -45,15 +54,6 @@
       "blurb": "Live aircraft, ships, satellites and public cameras on a photoreal 3D globe.",
       "url": "https://github.com/AKilalours/Gods_Eye",
       "demo": null
-    },
-    {
-      "name": "Forge",
-      "title": "FORGE",
-      "category": "llm",
-      "reason": "catalog.json",
-      "blurb": "AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI.",
-      "url": "https://github.com/AKilalours/Forge",
-      "demo": "https://akilalours.github.io/Forge/"
     },
     {
       "name": "pr-receipts",
