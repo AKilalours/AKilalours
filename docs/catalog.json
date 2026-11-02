@@ -1,6 +1,15 @@
 {
-  "generated": "2026-11-02T06:04+00:00",
+  "generated": "2026-11-02T15:53+00:00",
   "repos": [
+    {
+      "name": "guardian-drive",
+      "title": "Guardian Drive",
+      "category": "autonomy",
+      "reason": "catalog.json",
+      "blurb": "Driver-safety monitoring: from-scratch PointPillars, BEV encoder, physiological signals.",
+      "url": "https://github.com/AKilalours/guardian-drive",
+      "demo": "https://huggingface.co/spaces/Akilalourdes/guardian-drive-demo"
+    },
     {
       "name": "Forge",
       "title": "FORGE",
@@ -90,15 +99,6 @@
       "blurb": "Agentic RAG tutor on LangGraph and ChromaDB, with an eval harness that caught its own bug.",
       "url": "https://github.com/AKilalours/neurapilot",
       "demo": null
-    },
-    {
-      "name": "guardian-drive",
-      "title": "Guardian Drive",
-      "category": "autonomy",
-      "reason": "catalog.json",
-      "blurb": "Driver-safety monitoring: from-scratch PointPillars, BEV encoder, physiological signals.",
-      "url": "https://github.com/AKilalours/guardian-drive",
-      "demo": "https://huggingface.co/spaces/Akilalourdes/guardian-drive-demo"
     },
     {
       "name": "openpilot",
