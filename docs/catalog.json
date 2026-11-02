@@ -1,15 +1,6 @@
 {
-  "generated": "2026-11-01T22:02+00:00",
+  "generated": "2026-11-02T06:04+00:00",
   "repos": [
-    {
-      "name": "opendrivefm",
-      "title": "OpenDriveFM",
-      "category": "autonomy",
-      "reason": "catalog.json",
-      "blurb": "Camera-only multi-camera BEV occupancy on nuScenes, with a fault-injection trust harness.",
-      "url": "https://github.com/AKilalours/opendrivefm",
-      "demo": "https://huggingface.co/spaces/Akilalourdes/opendrivefm"
-    },
     {
       "name": "Forge",
       "title": "FORGE",
@@ -18,6 +9,15 @@
       "blurb": "AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI.",
       "url": "https://github.com/AKilalours/Forge",
       "demo": "https://akilalours.github.io/Forge/"
+    },
+    {
+      "name": "opendrivefm",
+      "title": "OpenDriveFM",
+      "category": "autonomy",
+      "reason": "catalog.json",
+      "blurb": "Camera-only multi-camera BEV occupancy on nuScenes, with a fault-injection trust harness.",
+      "url": "https://github.com/AKilalours/opendrivefm",
+      "demo": "https://huggingface.co/spaces/Akilalourdes/opendrivefm"
     },
     {
       "name": "streaming-canvas-search-ltr",
