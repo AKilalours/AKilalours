@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T15:53+00:00",
+  "generated": "2026-11-03T14:15+00:00",
   "repos": [
     {
       "name": "guardian-drive",
@@ -9,6 +9,15 @@
       "blurb": "Driver-safety monitoring: from-scratch PointPillars, BEV encoder, physiological signals.",
       "url": "https://github.com/AKilalours/guardian-drive",
       "demo": "https://huggingface.co/spaces/Akilalourdes/guardian-drive-demo"
+    },
+    {
+      "name": "achievements-practice",
+      "title": "Achievements practice",
+      "category": "new",
+      "reason": "no rule matched (best trust 0)",
+      "blurb": "Practice repo for Git and pull request workflows",
+      "url": "https://github.com/AKilalours/achievements-practice",
+      "demo": null
     },
     {
       "name": "Forge",
