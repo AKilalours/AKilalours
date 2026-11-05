@@ -1,6 +1,15 @@
 {
-  "generated": "2026-11-03T14:15+00:00",
+  "generated": "2026-11-05T06:47+00:00",
   "repos": [
+    {
+      "name": "cpg-intelligence-os",
+      "title": "CPG Intelligence OS",
+      "category": "data",
+      "reason": "catalog.json",
+      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
+      "url": "https://github.com/AKilalours/cpg-intelligence-os",
+      "demo": null
+    },
     {
       "name": "guardian-drive",
       "title": "Guardian Drive",
@@ -44,15 +53,6 @@
       "reason": "catalog.json",
       "blurb": "BM25 + FAISS hybrid retrieval, LightGBM LambdaRank, Kafka with graceful fallback.",
       "url": "https://github.com/AKilalours/streaming-canvas-search-ltr",
-      "demo": null
-    },
-    {
-      "name": "cpg-intelligence-os",
-      "title": "CPG Intelligence OS",
-      "category": "data",
-      "reason": "catalog.json",
-      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
-      "url": "https://github.com/AKilalours/cpg-intelligence-os",
       "demo": null
     },
     {
