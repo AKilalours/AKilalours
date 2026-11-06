@@ -1,15 +1,6 @@
 {
-  "generated": "2026-11-06T06:46+00:00",
+  "generated": "2026-11-06T19:24+00:00",
   "repos": [
-    {
-      "name": "cpg-intelligence-os",
-      "title": "CPG Intelligence OS",
-      "category": "data",
-      "reason": "catalog.json",
-      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
-      "url": "https://github.com/AKilalours/cpg-intelligence-os",
-      "demo": null
-    },
     {
       "name": "plumbline",
       "title": "Plumbline",
@@ -17,6 +8,15 @@
       "reason": "catalog.json",
       "blurb": "Customer data that checks its own answers: identity resolution, release gates, safe SQL.",
       "url": "https://github.com/AKilalours/plumbline",
+      "demo": null
+    },
+    {
+      "name": "cpg-intelligence-os",
+      "title": "CPG Intelligence OS",
+      "category": "data",
+      "reason": "catalog.json",
+      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
+      "url": "https://github.com/AKilalours/cpg-intelligence-os",
       "demo": null
     },
     {
