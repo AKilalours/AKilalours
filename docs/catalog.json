@@ -1,6 +1,15 @@
 {
-  "generated": "2026-11-09T06:30+00:00",
+  "generated": "2026-11-09T22:22+00:00",
   "repos": [
+    {
+      "name": "thursday-dinner-concierge",
+      "title": "Thursday dinner concierge",
+      "category": "llm",
+      "reason": "keywords (llm 12 vs trust 7)",
+      "blurb": "One sentence in. A booked, paid, on-policy dinner out. Nothing happens until you approve. Built for the Ande AI Engineer role \u00b7...",
+      "url": "https://github.com/AKilalours/thursday-dinner-concierge",
+      "demo": null
+    },
     {
       "name": "plumbline",
       "title": "Plumbline",
