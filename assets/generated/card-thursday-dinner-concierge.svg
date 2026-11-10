@@ -25,5 +25,5 @@ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 <rect x=".5" y=".5" width="419" height="127" rx="12" fill="none" stroke="#30363d"/>
 <text x="24" y="30" class="t">Thursday dinner concierge</text><g class="pop"><rect x="264" y="16" width="38" height="18" rx="9" fill="#ffa657"/><text x="283" y="29" text-anchor="middle" class="b">NEW</text></g><circle cx="398" cy="24" r="4" fill="#3fb950"/><circle cx="398" cy="24" r="4" fill="none" stroke="#3fb950" class="pulse"/>
 <text x="24" y="58" class="d">One sentence in. A booked, paid, on-policy dinner out.</text><text x="24" y="76" class="d">Nothing happens until you approve. Built for the Ande A...</text>
-<circle cx="30" cy="107" r="5" fill="#3178c6"/><text x="40" y="111" class="f">TypeScript</text><text x="116" y="111" class="f">&#9733; 0</text><text x="145" y="111" class="f">Nov 2026</text>
+<circle cx="30" cy="107" r="5" fill="#3178c6"/><text x="40" y="111" class="f">TypeScript</text><text x="116" y="111" class="f">&#9733; 1</text><text x="145" y="111" class="f">Nov 2026</text>
 </g></svg>
