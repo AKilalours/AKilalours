@@ -14,7 +14,7 @@ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 <text x="26" y="22" class="h">LLM systems, RAG &amp; agents</text>
 <text x="26" y="41" class="s">Retrieval-augmented generation, agent graphs, NLP classifiers, speech.</text></g>
 <rect x="801" y="8" width="57" height="20" rx="10" fill="#a371f7" fill-opacity=".14"/>
-<text x="829" y="22" text-anchor="middle" class="n">4 repos</text>
+<text x="829" y="22" text-anchor="middle" class="n">3 repos</text>
 <line class="line" x1="0" y1="52" x2="860" y2="52" stroke="#a371f7" stroke-opacity=".45" stroke-width="1.5" stroke-dasharray="860"/>
 <rect class="run" x="0" y="51" width="70" height="3" rx="1.5" fill="#a371f7"/>
 </svg>
