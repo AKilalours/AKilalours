@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10T19:44+00:00",
+  "generated": "2026-11-11T19:36+00:00",
   "repos": [
     {
       "name": "plumbline",
@@ -11,21 +11,21 @@
       "demo": null
     },
     {
-      "name": "achievements-practice",
-      "title": "Achievements practice",
-      "category": "new",
-      "reason": "no rule matched (best trust 0)",
-      "blurb": "Practice repo for Git and pull request workflows",
-      "url": "https://github.com/AKilalours/achievements-practice",
-      "demo": null
-    },
-    {
       "name": "thursday-dinner-concierge",
       "title": "Thursday dinner concierge",
       "category": "new",
       "reason": "ambiguous (llm 12 vs trust 8)",
       "blurb": "One sentence in. A booked, paid, on-policy dinner out. Nothing happens until you approve. Built for the Ande AI Engineer role \u00b7...",
       "url": "https://github.com/AKilalours/thursday-dinner-concierge",
+      "demo": null
+    },
+    {
+      "name": "achievements-practice",
+      "title": "Achievements practice",
+      "category": "new",
+      "reason": "no rule matched (best trust 0)",
+      "blurb": "Practice repo for Git and pull request workflows",
+      "url": "https://github.com/AKilalours/achievements-practice",
       "demo": null
     },
     {
