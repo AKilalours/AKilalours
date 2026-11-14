@@ -1,6 +1,15 @@
 {
-  "generated": "2026-11-14T06:23+00:00",
+  "generated": "2026-11-14T18:02+00:00",
   "repos": [
+    {
+      "name": "thursday-dinner-concierge",
+      "title": "Thursday dinner concierge",
+      "category": "llm",
+      "reason": "keywords (llm 34 vs trust 19)",
+      "blurb": "AI concierge that turns one sentence into an approved, on-policy dinner booking. Multi-agent, typed tools, Postgres-enforced approvals, evals on every push.",
+      "url": "https://github.com/AKilalours/thursday-dinner-concierge",
+      "demo": "https://akilalours.github.io/thursday-dinner-concierge/"
+    },
     {
       "name": "plumbline",
       "title": "Plumbline",
@@ -8,15 +17,6 @@
       "reason": "catalog.json",
       "blurb": "Customer data that checks its own answers: identity resolution, release gates, safe SQL.",
       "url": "https://github.com/AKilalours/plumbline",
-      "demo": null
-    },
-    {
-      "name": "thursday-dinner-concierge",
-      "title": "Thursday dinner concierge",
-      "category": "new",
-      "reason": "ambiguous (llm 12 vs trust 11)",
-      "blurb": "One sentence in. A booked, paid, on-policy dinner out. Nothing happens until you approve. Built for the Ande AI Engineer role \u00b7...",
-      "url": "https://github.com/AKilalours/thursday-dinner-concierge",
       "demo": null
     },
     {
