@@ -1,15 +1,6 @@
 {
-  "generated": "2026-11-13T19:42+00:00",
+  "generated": "2026-11-14T06:23+00:00",
   "repos": [
-    {
-      "name": "cpg-intelligence-os",
-      "title": "CPG Intelligence OS",
-      "category": "data",
-      "reason": "catalog.json",
-      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
-      "url": "https://github.com/AKilalours/cpg-intelligence-os",
-      "demo": null
-    },
     {
       "name": "plumbline",
       "title": "Plumbline",
@@ -23,9 +14,18 @@
       "name": "thursday-dinner-concierge",
       "title": "Thursday dinner concierge",
       "category": "new",
-      "reason": "ambiguous (llm 12 vs trust 8)",
+      "reason": "ambiguous (llm 12 vs trust 11)",
       "blurb": "One sentence in. A booked, paid, on-policy dinner out. Nothing happens until you approve. Built for the Ande AI Engineer role \u00b7...",
       "url": "https://github.com/AKilalours/thursday-dinner-concierge",
+      "demo": null
+    },
+    {
+      "name": "cpg-intelligence-os",
+      "title": "CPG Intelligence OS",
+      "category": "data",
+      "reason": "catalog.json",
+      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
+      "url": "https://github.com/AKilalours/cpg-intelligence-os",
       "demo": null
     },
     {
