@@ -1,15 +1,6 @@
 {
-  "generated": "2026-11-17T07:55+00:00",
+  "generated": "2026-11-17T20:55+00:00",
   "repos": [
-    {
-      "name": "plumbline",
-      "title": "Plumbline",
-      "category": "data",
-      "reason": "catalog.json",
-      "blurb": "Customer data that checks its own answers: identity resolution, release gates, safe SQL.",
-      "url": "https://github.com/AKilalours/plumbline",
-      "demo": null
-    },
     {
       "name": "thursday-dinner-concierge",
       "title": "Thursday dinner concierge",
@@ -18,6 +9,15 @@
       "blurb": "AI concierge that turns one sentence into an approved, on-policy dinner booking. Multi-agent, typed tools, Postgres-enforced approvals, evals on every push.",
       "url": "https://github.com/AKilalours/thursday-dinner-concierge",
       "demo": "https://akilalours.github.io/thursday-dinner-concierge/"
+    },
+    {
+      "name": "plumbline",
+      "title": "Plumbline",
+      "category": "data",
+      "reason": "catalog.json",
+      "blurb": "Customer data that checks its own answers: identity resolution, release gates, safe SQL.",
+      "url": "https://github.com/AKilalours/plumbline",
+      "demo": null
     },
     {
       "name": "cpg-intelligence-os",
