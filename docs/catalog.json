@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-20T20:21+00:00",
+  "generated": "2026-11-22T06:48+00:00",
   "repos": [
     {
       "name": "thursday-dinner-concierge",
       "title": "Thursday dinner concierge",
       "category": "llm",
-      "reason": "keywords (llm 30 vs data 16)",
+      "reason": "keywords (llm 29 vs trust 15)",
       "blurb": "AI concierge that turns one sentence into an approved, on-policy dinner booking. Multi-agent, typed tools, Postgres-enforced approvals, evals on every push.",
       "url": "https://github.com/AKilalours/thursday-dinner-concierge",
       "demo": "https://akilalours.github.io/thursday-dinner-concierge/"
