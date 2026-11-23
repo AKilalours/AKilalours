@@ -1,24 +1,6 @@
 {
-  "generated": "2026-11-22T19:41+00:00",
+  "generated": "2026-11-23T07:39+00:00",
   "repos": [
-    {
-      "name": "AskmeFirst",
-      "title": "AskmeFirst",
-      "category": "new",
-      "reason": "ambiguous (llm 7 vs apps 5)",
-      "blurb": "Most people don't know how to talk to AI. So this AI asks first.",
-      "url": "https://github.com/AKilalours/AskmeFirst",
-      "demo": null
-    },
-    {
-      "name": "Forge",
-      "title": "FORGE",
-      "category": "llm",
-      "reason": "catalog.json",
-      "blurb": "AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI.",
-      "url": "https://github.com/AKilalours/Forge",
-      "demo": "https://akilalours.github.io/Forge/"
-    },
     {
       "name": "thursday-dinner-concierge",
       "title": "Thursday dinner concierge",
@@ -36,6 +18,24 @@
       "blurb": "Customer data that checks its own answers: identity resolution, release gates, safe SQL.",
       "url": "https://github.com/AKilalours/plumbline",
       "demo": null
+    },
+    {
+      "name": "AskmeFirst",
+      "title": "AskmeFirst",
+      "category": "new",
+      "reason": "ambiguous (llm 5 vs foundations 4)",
+      "blurb": "Most people don't know how to talk to AI. So this AI asks first.",
+      "url": "https://github.com/AKilalours/AskmeFirst",
+      "demo": null
+    },
+    {
+      "name": "Forge",
+      "title": "FORGE",
+      "category": "llm",
+      "reason": "catalog.json",
+      "blurb": "AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI.",
+      "url": "https://github.com/AKilalours/Forge",
+      "demo": "https://akilalours.github.io/Forge/"
     },
     {
       "name": "cpg-intelligence-os",
