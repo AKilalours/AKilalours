@@ -1,6 +1,15 @@
 {
-  "generated": "2026-11-23T07:39+00:00",
+  "generated": "2026-11-24T09:54+00:00",
   "repos": [
+    {
+      "name": "cpg-intelligence-os",
+      "title": "CPG Intelligence OS",
+      "category": "data",
+      "reason": "catalog.json",
+      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
+      "url": "https://github.com/AKilalours/cpg-intelligence-os",
+      "demo": null
+    },
     {
       "name": "thursday-dinner-concierge",
       "title": "Thursday dinner concierge",
@@ -36,15 +45,6 @@
       "blurb": "AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI.",
       "url": "https://github.com/AKilalours/Forge",
       "demo": "https://akilalours.github.io/Forge/"
-    },
-    {
-      "name": "cpg-intelligence-os",
-      "title": "CPG Intelligence OS",
-      "category": "data",
-      "reason": "catalog.json",
-      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
-      "url": "https://github.com/AKilalours/cpg-intelligence-os",
-      "demo": null
     },
     {
       "name": "achievements-practice",
