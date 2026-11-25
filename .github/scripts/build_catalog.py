@@ -441,16 +441,17 @@ def build(repos: list[dict], readmes: dict[str, str], cat: dict, now: dt.datetim
         reel += [f'<img src="{img("reel.svg")}" width="100%" alt="Animated reel: {esc(", ".join(s["title"] for s in slides))}"/>', ""]
         pills = []
         for s in slides:
-            pills.append(f'<a href="{s["url"]}"><img src="https://img.shields.io/badge/{shield_label(s["title"])}-%E2%86%97-{s["color"][1:]}?style=for-the-badge&labelColor=0d1117" alt="Open {esc(s["title"])}"/></a>')
+            # Quiet one-word links: the reel above carries the attention.
+            pills.append(f'<a href="{s["url"]}"><img src="https://img.shields.io/badge/{shield_label(s["title"])}-%E2%86%97-{s["color"][1:]}?style=flat-square&labelColor=161b22" alt="Open {esc(s["title"])}"/></a>')
         reel += [" ".join(pills), ""]
     demos = [d for d in cat.get("demos", []) if d["repo"] in by_name and (ROOT / d["file"]).exists()]
     if demos:
-        reel += ["<table><tr>"]
+        # Equal-size tiles with the title baked into each GIF, laid out two per
+        # row without a table, so GitHub draws no borders and nothing to read.
+        reel += ['<p align="center">']
         for d in demos:
-            reel += [f'<td align="center" width="{100 // len(demos)}%"><a href="{by_name[d["repo"]]["url"]}">'
-                     f'<img src="{raw_base}/{d["file"]}" width="100%" alt="{esc(d["caption"])}"/></a>'
-                     f'<br/><sub>{esc(d["caption"])}</sub></td>']
-        reel += ["</tr></table>", ""]
+            reel += [f'<a href="{by_name[d["repo"]]["url"]}"><img src="{raw_base}/{d["file"]}?v={ver}" width="49%" alt="{esc(d["caption"])}"/></a>']
+        reel += ["</p>", ""]
     reel += ["</div>"]
     reel_md = "\n".join(reel)
 

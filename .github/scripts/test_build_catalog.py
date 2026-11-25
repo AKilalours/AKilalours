@@ -127,6 +127,28 @@ class Card(unittest.TestCase):
         self.assertIn("faithfulness 0.595 (goal 0.70)", body)
 
 
+class Showcase(unittest.TestCase):
+    def test_every_demo_file_exists_and_is_light(self):
+        # build() skips a demo whose file is missing, so a typo would silently
+        # drop a GIF from the profile. Large GIFs may be refused by GitHub's proxy.
+        for d in CAT["demos"]:
+            with self.subTest(file=d["file"]):
+                f = b.ROOT / d["file"]
+                self.assertTrue(f.exists(), f"{d['file']} listed in catalog.json but missing")
+                self.assertLess(f.stat().st_size, 2_500_000)
+
+    def test_reel_and_demos_name_real_catalog_repos(self):
+        for name in CAT["reel"] + [d["repo"] for d in CAT["demos"]]:
+            with self.subTest(repo=name):
+                self.assertIn(name, CAT["repos"])
+
+    def test_demo_strip_has_no_table(self):
+        repos = [repo(d["repo"]) for d in CAT["demos"]]
+        res = b.build(repos, {}, CAT, NOW, "https://raw.example", write=False)
+        self.assertNotIn("<table", res["reel"])
+        self.assertEqual(res["reel"].count('width="49%"'), len(CAT["demos"]))
+
+
 class Summary(unittest.TestCase):
     def test_skips_badges_and_credits(self):
         md = ("![b](https://img.shields.io/x)\n### *Built by* **Someone Long Name Here And More Words**\n"

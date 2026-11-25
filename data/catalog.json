@@ -106,12 +106,13 @@
     "achievements-practice"
   ],
 
-  "reel": ["opendrivefm", "plumbline", "neurapilot", "streaming-canvas-search-ltr", "Esophageal-Cancer-Detection", "Gods_Eye"],
+  "reel": ["thursday-dinner-concierge", "opendrivefm", "AskmeFirst", "plumbline", "neurapilot", "streaming-canvas-search-ltr", "Esophageal-Cancer-Detection", "Gods_Eye"],
 
   "demos": [
-    {"repo": "opendrivefm", "file": "assets/demos/opendrivefm.gif", "caption": "OpenDriveFM: occupancy on a held-out nuScenes scene"},
-    {"repo": "plumbline",   "file": "assets/demos/plumbline.gif",   "caption": "Plumbline: a false merge caught, approved, fixed"},
-    {"repo": "Gods_Eye",    "file": "assets/demos/gods-eye.gif",    "caption": "God's Eye: live public data on a 3D globe"}
+    {"repo": "thursday-dinner-concierge", "file": "assets/demos/thursday-dinner-concierge.gif", "caption": "Thursday Dinner Concierge: one sentence in, booked only after you approve"},
+    {"repo": "AskmeFirst",                "file": "assets/demos/askmefirst.gif",                "caption": "Ask Me First: it asks you first, then writes the expert prompt"},
+    {"repo": "opendrivefm",               "file": "assets/demos/opendrivefm.gif",               "caption": "OpenDriveFM: occupancy on a held-out nuScenes scene"},
+    {"repo": "Gods_Eye",                  "file": "assets/demos/gods-eye.gif",                  "caption": "God's Eye: live public data on a 3D globe"}
   ],
 
   "repos": {
@@ -142,7 +143,7 @@
     },
     "AskmeFirst": {
       "category": "llm", "title": "Ask Me First",
-      "blurb": "Asks you the right questions first, then hands ChatGPT or Claude expert instructions.",
+      "blurb": "Asks you the right questions first, then writes expert instructions for any AI assistant.",
       "metric": "built solo in 1 day"
     },
     "neurapilot": {
