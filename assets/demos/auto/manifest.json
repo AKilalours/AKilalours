@@ -1,10 +1,10 @@
 {
-  "Forge": {
-    "bytes": 793513,
-    "caption": "A controlled experiment, not a product claim.",
-    "key": "3929533b31257b7d",
-    "source": "https://raw.githubusercontent.com/AKilalours/Forge/HEAD/images/forge-product-tour.gif",
-    "title": "FORGE"
+  "cpg-intelligence-os": {
+    "bytes": 1046973,
+    "caption": "AI back office for CPG brands: invoices, cash matching...",
+    "key": "1fab80ce8d87e831",
+    "source": "https://raw.githubusercontent.com/AKilalours/cpg-intelligence-os/HEAD/docs/media/today.gif",
+    "title": "CPG Intelligence OS"
   },
   "plumbline": {
     "bytes": 265138,
