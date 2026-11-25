@@ -454,9 +454,14 @@ def build(repos: list[dict], readmes: dict[str, str], cat: dict, now: dt.datetim
     reel += ["</div>"]
     reel_md = "\n".join(reel)
 
-    graph_js = render_graph(cat, items)
+    # README cards stay newest-first, which is what a visitor wants. The graph and
+    # docs/catalog.json are order-insensitive to a viewer, so they use a stable
+    # alphabetical order: otherwise every push to any repo reorders them and the
+    # workflow commits a change no one can see.
+    stable = sorted(items, key=lambda i: i["name"].lower())
+    graph_js = render_graph(cat, stable)
     data = {"generated": now.isoformat(timespec="minutes"),
-            "repos": [{k: i[k] for k in ("name", "title", "category", "reason", "blurb", "url", "demo")} for i in items]}
+            "repos": [{k: i[k] for k in ("name", "title", "category", "reason", "blurb", "url", "demo")} for i in stable]}
 
     if write:
         OUT.mkdir(parents=True, exist_ok=True)
@@ -473,7 +478,8 @@ def build(repos: list[dict], readmes: dict[str, str], cat: dict, now: dt.datetim
             GRAPH.write_text(replace_block(GRAPH.read_text(), "// CATALOG:START", "// CATALOG:END", graph_js, "docs/index.html"))
         (ROOT / "docs" / "catalog.json").write_text(json.dumps(data, indent=2) + "\n")
 
-    return {"items": items, "files": files, "markdown": catalog_md, "reel": reel_md, "report": report, "graph": graph_js}
+    return {"items": items, "files": files, "markdown": catalog_md, "reel": reel_md, "report": report,
+            "graph": graph_js, "data": data}
 
 
 def render_graph(cat: dict, items: list[dict]) -> str:

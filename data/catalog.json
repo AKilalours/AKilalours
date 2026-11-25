@@ -102,7 +102,8 @@
 
   "hide": [
     "AKilalours",
-    "observability-sandbox"
+    "observability-sandbox",
+    "achievements-practice"
   ],
 
   "reel": ["opendrivefm", "plumbline", "neurapilot", "streaming-canvas-search-ltr", "Esophageal-Cancer-Detection", "Gods_Eye"],
@@ -133,6 +134,16 @@
       "category": "llm", "title": "FORGE",
       "blurb": "AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI.",
       "metric": "66 tests", "loc": 27574
+    },
+    "thursday-dinner-concierge": {
+      "category": "llm", "title": "Thursday Dinner Concierge",
+      "blurb": "Agentic booking assistant: one sentence in, an on-policy dinner booked only after you approve.",
+      "metric": "68/68 evals, 161 tests", "demo": "https://akilalours.github.io/thursday-dinner-concierge/"
+    },
+    "AskmeFirst": {
+      "category": "llm", "title": "Ask Me First",
+      "blurb": "Asks you the right questions first, then hands ChatGPT or Claude expert instructions.",
+      "metric": "built solo in 1 day"
     },
     "neurapilot": {
       "category": "llm", "title": "NeuraPilot",
