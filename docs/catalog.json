@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25T08:20+00:00",
+  "generated": "2026-11-25T08:33+00:00",
   "repos": [
     {
       "name": "AI-Powered-Health-Risk-Prediction-System-for-Multi-Disease-Diagnosis",
@@ -15,7 +15,7 @@
       "title": "SafetyEval Lab",
       "category": "trust",
       "reason": "catalog.json",
-      "blurb": "Typed eval framework for reward hacking, sycophancy and prompt injection.",
+      "blurb": "Research-style AI safety evaluation lab for reward hacking, sycophancy, prompt injection, unsafe helpfulness, and LLM security regression testing.",
       "url": "https://github.com/AKilalours/akila-safety-eval-lab",
       "demo": null
     },
@@ -96,7 +96,7 @@
       "title": "CPG Intelligence OS",
       "category": "data",
       "reason": "catalog.json",
-      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
+      "blurb": "AI back office for CPG brands: invoices, cash matching, deduction agent, demand forecasts, lost sales. Every result scored once on unseen public data.",
       "url": "https://github.com/AKilalours/cpg-intelligence-os",
       "demo": "https://akilalours.github.io/cpg-intelligence-os/"
     },
@@ -276,7 +276,7 @@
       "title": "Offline Voice RAG",
       "category": "llm",
       "reason": "catalog.json",
-      "blurb": "Local speech-to-answer: faster-whisper ASR, BGE retrieval, Coqui TTS, cited answers.",
+      "blurb": "Local Voice Chat + Translator with Whisper, Ollama, and Coqui TTS",
       "url": "https://github.com/AKilalours/rag-adversarial-robustness-eval-harness",
       "demo": null
     },
@@ -294,7 +294,7 @@
       "title": "Sign Language Recognition (paper)",
       "category": "foundations",
       "reason": "catalog.json",
-      "blurb": "Sign-Language-Regonization-using-CNN-Algorithm-with-Meachine-Learning-Techniques-Paper",
+      "blurb": "This repository contains the research paper and technical documentation for a Deep Learning system designed to translate visual sign...",
       "url": "https://github.com/AKilalours/Sign-Language-Regonization-using-CNN-Algorithm-with-Meachine-Learning-Techniques-Paper",
       "demo": null
     },
@@ -339,7 +339,7 @@
       "title": "Thursday Dinner Concierge",
       "category": "llm",
       "reason": "catalog.json",
-      "blurb": "Agentic booking assistant: one sentence in, an on-policy dinner booked only after you approve.",
+      "blurb": "AI concierge that turns one sentence into an approved, on-policy dinner booking. Multi-agent, typed tools, Postgres-enforced approvals, evals on every push.",
       "url": "https://github.com/AKilalours/thursday-dinner-concierge",
       "demo": "https://akilalours.github.io/thursday-dinner-concierge/"
     },

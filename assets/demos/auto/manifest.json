@@ -1,0 +1,16 @@
+{
+  "Forge": {
+    "bytes": 793513,
+    "caption": "A controlled experiment, not a product claim.",
+    "key": "3929533b31257b7d",
+    "source": "https://raw.githubusercontent.com/AKilalours/Forge/HEAD/images/forge-product-tour.gif",
+    "title": "FORGE"
+  },
+  "plumbline": {
+    "bytes": 265138,
+    "caption": "Data ingestion that proves it is right.",
+    "key": "de2a6da8c3447469",
+    "source": "https://raw.githubusercontent.com/AKilalours/plumbline/HEAD/docs/img/stream.gif",
+    "title": "Plumbline"
+  }
+}

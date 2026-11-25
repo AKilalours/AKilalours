@@ -24,6 +24,6 @@ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 </g>
 <rect x=".5" y=".5" width="419" height="127" rx="12" fill="none" stroke="#30363d"/>
 <text x="24" y="30" class="t">Sign Language Recognition (pap</text>
-<text x="24" y="58" class="d"></text><text x="24" y="76" class="d">Sign-Language-Regonization-using-CNN-Algorithm-with-Mea...</text>
+<text x="24" y="58" class="d">This repository contains the research paper and technical</text><text x="24" y="76" class="d">documentation for a Deep Learning system designed to...</text>
 <circle cx="30" cy="107" r="5" fill="#8b949e"/><text x="40" y="111" class="f">Docs</text><text x="78" y="111" class="f">&#9733; 1</text><text x="107" y="111" class="f">Mar 2026</text>
 </g></svg>
