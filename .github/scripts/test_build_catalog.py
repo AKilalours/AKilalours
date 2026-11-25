@@ -95,6 +95,16 @@ class Build(unittest.TestCase):
         once = b.replace_block(t, "<!-- A -->", "<!-- B -->", "new", "f")
         self.assertEqual(once, b.replace_block(once, "<!-- A -->", "<!-- B -->", "new", "f"))
 
+    def test_push_order_does_not_change_graph_or_data(self):
+        # Bug seen in production: pushing to any repo reordered the graph and
+        # docs/catalog.json, so the bot committed twice a day with no visible change.
+        a = [repo("opendrivefm", pushed_at="2026-10-01T00:00:00Z"), repo("neurapilot", pushed_at="2026-10-02T00:00:00Z")]
+        b2 = [dict(a[0], pushed_at="2026-10-03T00:00:00Z"), a[1]]
+        r1 = b.build(a, {}, CAT, NOW, "https://raw.example", write=False)
+        r2 = b.build(b2, {}, CAT, NOW, "https://raw.example", write=False)
+        self.assertEqual(r1["graph"], r2["graph"])
+        self.assertEqual([x["name"] for x in r1["data"]["repos"]], [x["name"] for x in r2["data"]["repos"]])
+
     def test_graph_js_excludes_forks(self):
         self.assertNotIn('"carla"', self.res["graph"])
 
