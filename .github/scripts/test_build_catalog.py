@@ -109,6 +109,24 @@ class Build(unittest.TestCase):
         self.assertNotIn('"carla"', self.res["graph"])
 
 
+class Description(unittest.TestCase):
+    def blurb(self, r, cat=CAT, md=""):
+        return b.build([r], {r["name"]: md}, cat, NOW, "x", write=False)["items"][0]["blurb"]
+
+    def test_live_about_line_beats_older_catalog_text(self):
+        # Seen live: cpg-intelligence-os got a new About line, the card kept old text.
+        r = repo("cpg-intelligence-os", description="AI back office for CPG brands.")
+        self.assertEqual(self.blurb(r), "AI back office for CPG brands.")
+
+    def test_lock_blurb_keeps_catalog_text(self):
+        r = repo("Crypto-Risk-Bench", description="This project is used to predict the price of bitcoin")
+        self.assertTrue(self.blurb(r).startswith("Crypto market risk metrics"))
+
+    def test_new_repo_uses_readme_tagline(self):
+        md = "# Brand New\n### Turns a messy inbox into three decisions a day.\n"
+        self.assertEqual(self.blurb(repo("brand-new"), md=md), "Turns a messy inbox into three decisions a day.")
+
+
 class Card(unittest.TestCase):
     def test_metric_is_never_truncated(self):
         # A clipped "AUROC 0.434 to 0.7..." misstates a result; drop it whole instead.

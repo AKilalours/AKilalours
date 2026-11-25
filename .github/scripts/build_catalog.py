@@ -32,11 +32,16 @@ import sys
 import urllib.error
 import urllib.request
 
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import media  # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "data" / "catalog.json"
 OUT = ROOT / "assets" / "generated"
 README = ROOT / "README.md"
 GRAPH = ROOT / "docs" / "index.html"
+AUTO_DIR = ROOT / "assets" / "demos" / "auto"
+MANIFEST = AUTO_DIR / "manifest.json"
 RAW = "https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
 
 LANG_COLORS = {
@@ -215,7 +220,8 @@ def card_footer(item: dict, lang: str, lcol: str, color: str) -> tuple[str, str]
 
 def card_svg(item: dict, color: str) -> str:
     """420x128 repo card. Dark by design so it reads on both GitHub themes."""
-    lines = wrap(item["blurb"] or "No description yet.", 58, 2)
+    # Whole sentences when they fit in two lines, so a long About line ends cleanly.
+    lines = wrap(media.fit_caption(item["blurb"] or "No description yet.", 114), 58, 2)
     lang = {"Jupyter Notebook": "Jupyter"}.get(item["language"], item["language"]) or ("Fork" if item["fork"] else "Docs")
     lcol = LANG_COLORS.get(item["language"] or "", "#8b949e")
     badges = ""
@@ -369,7 +375,9 @@ def replace_block(text: str, start: str, end: str, new: str, where: str) -> str:
 
 
 def build(repos: list[dict], readmes: dict[str, str], cat: dict, now: dt.datetime,
-          raw_base: str, write: bool = True) -> dict:
+          raw_base: str, write: bool = True, showcase: list[dict] | None = None) -> dict:
+    """`showcase`: tiles for the "watch it" grid as {repo, file, caption}. None
+    means the pinned `demos` from catalog.json only (tests, offline runs)."""
     owner = cat["owner"]
     cats = {c["id"]: c for c in cat["categories"]}
     items, report = [], []
@@ -379,7 +387,15 @@ def build(repos: list[dict], readmes: dict[str, str], cat: dict, now: dt.datetim
         md = readmes.get(r["name"], "")
         cid, why = classify(r, md, cat)
         e = cat["repos"].get(r["name"], {})
-        blurb = e.get("blurb") or r.get("description") or readme_summary(md)
+        # What a visitor reads. The repo's GitHub "About" line wins because it is
+        # the one you keep current; catalog text fills in where it is empty, or
+        # wins when `lock_blurb` says the About line should not be used.
+        about = (r.get("description") or "").strip()
+        if e.get("lock_blurb"):
+            blurb = e.get("blurb") or about
+        else:
+            blurb = about or e.get("blurb") or ""
+        blurb = blurb or media.find_tagline(md) or readme_summary(md)
         items.append({
             "name": r["name"], "title": e.get("title") or (r["name"] if r.get("fork") else pretty_name(r["name"])),
             "category": cid, "reason": why, "blurb": blurb or "",
@@ -444,7 +460,9 @@ def build(repos: list[dict], readmes: dict[str, str], cat: dict, now: dt.datetim
             # Quiet one-word links: the reel above carries the attention.
             pills.append(f'<a href="{s["url"]}"><img src="https://img.shields.io/badge/{shield_label(s["title"])}-%E2%86%97-{s["color"][1:]}?style=flat-square&labelColor=161b22" alt="Open {esc(s["title"])}"/></a>')
         reel += [" ".join(pills), ""]
-    demos = [d for d in cat.get("demos", []) if d["repo"] in by_name and (ROOT / d["file"]).exists()]
+    if showcase is None:
+        showcase = cat.get("demos", [])
+    demos = [d for d in showcase if d["repo"] in by_name and (ROOT / d["file"]).exists()]
     if demos:
         # Equal-size tiles with the title baked into each GIF, laid out two per
         # row without a table, so GitHub draws no borders and nothing to read.
@@ -504,12 +522,59 @@ def slug(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
+# --------------------------------------------------------------------- showcase
+def build_showcase(items: list[dict], readmes: dict[str, str], cat: dict, dry_run: bool = False) -> list[dict]:
+    """Pinned tiles, then auto tiles from each repo's own README media, newest first."""
+    conf = cat.get("showcase", {})
+    size = conf.get("size", 6)
+    cats = {c["id"]: c for c in cat["categories"]}
+    skip = {c["id"] for c in cat["categories"] if c.get("layout") == "chips"}
+    hero = {i["name"]: media.find_hero_media(readmes.get(i["name"], ""), cat["owner"], i["name"]) for i in items}
+    pinned = [d for d in cat.get("demos", []) if (ROOT / d["file"]).exists()]
+    if not conf.get("auto", True):
+        return pinned[:size]
+    by = {i["name"]: i for i in items}
+    manifest = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
+    out: list[dict] = []
+    for entry in media.select_showcase(items, hero, pinned, size, skip):
+        if len(out) >= size:
+            break
+        if entry["pinned"]:
+            out.append(entry)
+            continue
+        i = by[entry["repo"]]
+        # The README's own hook line reads best on a video tile; the card text
+        # is the fallback when there is no tagline or it would not fit one line.
+        options = [media.fit_caption(s) for s in (media.find_tagline(readmes.get(i["name"], "")), i["blurb"]) if s]
+        caption = next((o for o in options if len(o) >= 12 and not o.endswith("...")), options[-1] if options else i["title"])
+        if dry_run:
+            print(f"  would render tile: {i['name']} <- {entry['source']}")
+            continue
+        AUTO_DIR.mkdir(parents=True, exist_ok=True)
+        f = media.ensure_tile(entry, i["title"], caption, cats[i["category"]]["color"], ROOT, AUTO_DIR, manifest)
+        if f:
+            out.append({"repo": i["name"], "file": f, "caption": f"{i['title']}: {caption}"})
+    # An odd tile would sit alone on the last row; drop the oldest auto one instead.
+    if len(out) % 2 and len(out) > 1 and not out[-1].get("pinned"):
+        out.pop()
+    if not dry_run:
+        keep = {pathlib.Path(d["file"]).name for d in out}
+        for g in AUTO_DIR.glob("*.gif") if AUTO_DIR.exists() else []:
+            if g.name not in keep:
+                g.unlink()
+        manifest = {k: v for k, v in manifest.items() if any(d["repo"] == k for d in out)}
+        if AUTO_DIR.exists():
+            MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    return out
+
+
 # ------------------------------------------------------------------------- main
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--fixture", help="repos JSON instead of the live API")
     ap.add_argument("--readme-dir", help="directory of <repo>.md instead of the live API")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--no-media", action="store_true", help="skip downloading and rendering video tiles")
     args = ap.parse_args()
 
     cat = json.loads(CATALOG.read_text())
@@ -525,10 +590,8 @@ def main() -> None:
     for r in repos:
         if r["name"] in cat["hide"] or r.get("fork"):
             continue
-        # README text is only needed for repos the catalog does not describe.
-        e = cat["repos"].get(r["name"], {})
-        if e.get("category") and e.get("blurb"):
-            continue
+        # Every visible repo's README is read: it supplies the hero video and the
+        # tagline even when the catalog already describes the repo.
         if args.readme_dir:
             p = pathlib.Path(args.readme_dir) / f"{r['name']}.md"
             readmes[r["name"]] = p.read_text(errors="replace") if p.exists() else ""
@@ -537,7 +600,9 @@ def main() -> None:
 
     now = dt.datetime.now(dt.timezone.utc)
     raw_base = f"https://raw.githubusercontent.com/{owner}/{owner}/main"
-    res = build(repos, readmes, cat, now, raw_base, write=not args.dry_run)
+    first = build(repos, readmes, cat, now, raw_base, write=False)
+    showcase = None if args.no_media else build_showcase(first["items"], readmes, cat, dry_run=args.dry_run)
+    res = build(repos, readmes, cat, now, raw_base, write=not args.dry_run, showcase=showcase)
 
     width = max(len(n) for n, _, _ in res["report"])
     for n, c, why in sorted(res["report"], key=lambda x: (x[1], x[0])):
