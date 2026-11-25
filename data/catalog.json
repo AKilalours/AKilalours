@@ -1,5 +1,5 @@
 {
-  "_comment": "Source of truth for the auto-generated repository catalog in README.md. The Action in .github/workflows/repo-catalog.yml lists every public repo, classifies it, and regenerates the catalog. A repo NOT listed under `repos` is classified automatically: GitHub topic `cat-<id>` first, then keyword scoring over name, description, topics and README, then the `new` bucket. Edit here, never in the generated SVGs or between the CATALOG markers in README.md.",
+  "_comment": "Source of truth for the auto-generated repository catalog in README.md. The Action in .github/workflows/repo-catalog.yml lists every public repo, classifies it, and regenerates the catalog. Card text comes from the repo's GitHub About line when it has one; `blurb` here is the fallback, or the override when `lock_blurb` is true. A repo NOT listed under `repos` is classified automatically: GitHub topic `cat-<id>` first, then keyword scoring over name, description, topics and README, then the `new` bucket. Edit here, never in the generated SVGs or between the CATALOG markers in README.md.",
 
   "owner": "AKilalours",
   "new_badge_days": 21,
@@ -106,6 +106,12 @@
     "achievements-practice"
   ],
 
+  "showcase": {
+    "_comment": "The video grid under the reel. Pinned `demos` first, then the most recently pushed repos whose README opens with a GIF, video or screenshot, until `size` tiles. Set auto to false to show pinned only.",
+    "size": 6,
+    "auto": true
+  },
+
   "reel": ["thursday-dinner-concierge", "opendrivefm", "AskmeFirst", "plumbline", "neurapilot", "streaming-canvas-search-ltr", "Esophageal-Cancer-Detection", "Gods_Eye"],
 
   "demos": [
@@ -208,11 +214,10 @@
     },
     "cpg-intelligence-os": {
       "category": "data", "title": "CPG Intelligence OS",
-      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations.",
-      "metric": "phase 2 of 6"
+      "blurb": "Evidence-grounded document AI and reconciliation for CPG financial operations."
     },
     "Crypto-Risk-Bench": {
-      "category": "data", "title": "Crypto Risk Bench",
+      "category": "data", "title": "Crypto Risk Bench", "lock_blurb": true,
       "blurb": "Crypto market risk metrics and walk-forward backtesting with an HTML dashboard."
     },
     "Gods_Eye": {

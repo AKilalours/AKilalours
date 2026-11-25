@@ -112,3 +112,35 @@ before anything is generated).
 
 **Local dry run:** `python .github/scripts/build_catalog.py --dry-run` with
 `GITHUB_TOKEN` set.
+
+## Video grid (automatic)
+
+Under the reel sits a grid of up to six looping tiles. Pinned ones (`demos` in
+`data/catalog.json`) come first; the rest are filled automatically from your most
+recently updated repos, using each repo's own README. Settings: `showcase.size`
+and `showcase.auto` in the catalog.
+
+**The README rule.** For a repo to get a good tile and a clear card, put these two
+things at the top of its README, above the first `##` section:
+
+```markdown
+# Project Name
+One line that says what it does for the person using it.
+
+![demo](docs/demo.gif)
+```
+
+- **The line** under the title becomes the caption on the tile and, if the repo has
+  no GitHub "About" text, the description on its card. Keep it under about 65
+  characters so it fits the tile in one piece. Notes in `<sub>` are skipped.
+- **The media** can be a GIF, an MP4 or WebM in the repo, a video dragged into the
+  README editor (`github.com/user-attachments/...`), or a screenshot. Anything that
+  moves is preferred over a still image. Badges, logos and icons are ignored. If a
+  GIF is wrapped in a link to a longer video, the GIF shown on the page is used.
+- **The card description** comes from the repo's GitHub **About** line first (the
+  gear icon on the repo page), so that is where to keep it current. Text in the
+  catalog is only a fallback, or an override when `lock_blurb` is true.
+
+Each tile is rebuilt only when its source file, title or caption changes, and the
+first eight seconds are used. Only files hosted by GitHub for this account are
+downloaded; a link to any other site is ignored.
