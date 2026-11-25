@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="128" viewBox="0 0 420 128" role="img" aria-label="AskmeFirst">
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="128" viewBox="0 0 420 128" role="img" aria-label="Ask Me First">
 <style>
 text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
 .t{font-size:16px;font-weight:600;fill:#e6edf3} .d{font-size:12.5px;fill:#9198a1}
@@ -20,10 +20,10 @@ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 <g class="card"><g clip-path="url(#c)">
 <rect width="420" height="128" fill="#0d1117"/>
 <rect class="sheen" x="0" y="0" width="120" height="128" fill="url(#s)"/>
-<rect class="bar" x="0" y="0" width="5" height="128" fill="#ffa657"/>
+<rect class="bar" x="0" y="0" width="5" height="128" fill="#a371f7"/>
 </g>
 <rect x=".5" y=".5" width="419" height="127" rx="12" fill="none" stroke="#30363d"/>
-<text x="24" y="30" class="t">AskmeFirst</text><g class="pop"><rect x="126" y="16" width="38" height="18" rx="9" fill="#ffa657"/><text x="145" y="29" text-anchor="middle" class="b">NEW</text></g><circle cx="398" cy="24" r="4" fill="#3fb950"/><circle cx="398" cy="24" r="4" fill="none" stroke="#3fb950" class="pulse"/>
-<text x="24" y="58" class="d">Most people don&#x27;t know how to talk to AI. So this AI asks</text><text x="24" y="76" class="d">first.</text>
+<text x="24" y="30" class="t">Ask Me First</text><g class="pop"><rect x="144" y="16" width="38" height="18" rx="9" fill="#ffa657"/><text x="163" y="29" text-anchor="middle" class="b">NEW</text></g><circle cx="398" cy="24" r="4" fill="#3fb950"/><circle cx="398" cy="24" r="4" fill="none" stroke="#3fb950" class="pulse"/>
+<text x="24" y="58" class="d">Asks you the right questions first, then hands ChatGPT or</text><text x="24" y="76" class="d">Claude expert instructions.</text>
 <circle cx="30" cy="107" r="5" fill="#e34c26"/><text x="40" y="111" class="f">HTML</text><text x="78" y="111" class="f">&#9733; 0</text><text x="107" y="111" class="f">Nov 2026</text>
-</g></svg>
+<rect x="268" y="96" width="136" height="20" rx="10" fill="#a371f7" fill-opacity=".16" stroke="#a371f7" stroke-opacity=".5"/><text x="336" y="110" text-anchor="middle" class="m" fill="#a371f7">built solo in 1 day</text></g></svg>
