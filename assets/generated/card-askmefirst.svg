@@ -24,6 +24,6 @@ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 </g>
 <rect x=".5" y=".5" width="419" height="127" rx="12" fill="none" stroke="#30363d"/>
 <text x="24" y="30" class="t">Ask Me First</text><g class="pop"><rect x="144" y="16" width="38" height="18" rx="9" fill="#ffa657"/><text x="163" y="29" text-anchor="middle" class="b">NEW</text></g><circle cx="398" cy="24" r="4" fill="#3fb950"/><circle cx="398" cy="24" r="4" fill="none" stroke="#3fb950" class="pulse"/>
-<text x="24" y="58" class="d">Asks you the right questions first, then hands ChatGPT or</text><text x="24" y="76" class="d">Claude expert instructions.</text>
+<text x="24" y="58" class="d">Asks you the right questions first, then writes expert</text><text x="24" y="76" class="d">instructions for any AI assistant.</text>
 <circle cx="30" cy="107" r="5" fill="#e34c26"/><text x="40" y="111" class="f">HTML</text><text x="78" y="111" class="f">&#9733; 0</text><text x="107" y="111" class="f">Nov 2026</text>
 <rect x="268" y="96" width="136" height="20" rx="10" fill="#a371f7" fill-opacity=".16" stroke="#a371f7" stroke-opacity=".5"/><text x="336" y="110" text-anchor="middle" class="m" fill="#a371f7">built solo in 1 day</text></g></svg>

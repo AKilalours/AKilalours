@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25T08:04+00:00",
+  "generated": "2026-11-25T08:20+00:00",
   "repos": [
     {
       "name": "AI-Powered-Health-Risk-Prediction-System-for-Multi-Disease-Diagnosis",
@@ -33,7 +33,7 @@
       "title": "Ask Me First",
       "category": "llm",
       "reason": "catalog.json",
-      "blurb": "Asks you the right questions first, then hands ChatGPT or Claude expert instructions.",
+      "blurb": "Asks you the right questions first, then writes expert instructions for any AI assistant.",
       "url": "https://github.com/AKilalours/AskmeFirst",
       "demo": null
     },

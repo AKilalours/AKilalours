@@ -45,15 +45,16 @@ timelines.
 <!-- REEL:START -->
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/generated/reel.svg?v=2026112508" width="100%" alt="Animated reel: OpenDriveFM, Plumbline, NeuraPilot, StreamLens, GI Lesion Screening, God&#x27;s Eye"/>
+<img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/generated/reel.svg?v=2026112508" width="100%" alt="Animated reel: Thursday Dinner Concierge, OpenDriveFM, Ask Me First, Plumbline, NeuraPilot, StreamLens, GI Lesion Screening, God&#x27;s Eye"/>
 
-<a href="https://github.com/AKilalours/opendrivefm"><img src="https://img.shields.io/badge/OpenDriveFM-%E2%86%97-58a6ff?style=for-the-badge&labelColor=0d1117" alt="Open OpenDriveFM"/></a> <a href="https://github.com/AKilalours/plumbline"><img src="https://img.shields.io/badge/Plumbline-%E2%86%97-39c5cf?style=for-the-badge&labelColor=0d1117" alt="Open Plumbline"/></a> <a href="https://github.com/AKilalours/neurapilot"><img src="https://img.shields.io/badge/NeuraPilot-%E2%86%97-a371f7?style=for-the-badge&labelColor=0d1117" alt="Open NeuraPilot"/></a> <a href="https://github.com/AKilalours/streaming-canvas-search-ltr"><img src="https://img.shields.io/badge/StreamLens-%E2%86%97-3fb950?style=for-the-badge&labelColor=0d1117" alt="Open StreamLens"/></a> <a href="https://github.com/AKilalours/Esophageal-Cancer-Detection"><img src="https://img.shields.io/badge/GI_Lesion_Screening-%E2%86%97-ff7b72?style=for-the-badge&labelColor=0d1117" alt="Open GI Lesion Screening"/></a> <a href="https://github.com/AKilalours/Gods_Eye"><img src="https://img.shields.io/badge/God%27s_Eye-%E2%86%97-db61a2?style=for-the-badge&labelColor=0d1117" alt="Open God&#x27;s Eye"/></a>
+<a href="https://github.com/AKilalours/thursday-dinner-concierge"><img src="https://img.shields.io/badge/Thursday_Dinner_Concierge-%E2%86%97-a371f7?style=flat-square&labelColor=161b22" alt="Open Thursday Dinner Concierge"/></a> <a href="https://github.com/AKilalours/opendrivefm"><img src="https://img.shields.io/badge/OpenDriveFM-%E2%86%97-58a6ff?style=flat-square&labelColor=161b22" alt="Open OpenDriveFM"/></a> <a href="https://github.com/AKilalours/AskmeFirst"><img src="https://img.shields.io/badge/Ask_Me_First-%E2%86%97-a371f7?style=flat-square&labelColor=161b22" alt="Open Ask Me First"/></a> <a href="https://github.com/AKilalours/plumbline"><img src="https://img.shields.io/badge/Plumbline-%E2%86%97-39c5cf?style=flat-square&labelColor=161b22" alt="Open Plumbline"/></a> <a href="https://github.com/AKilalours/neurapilot"><img src="https://img.shields.io/badge/NeuraPilot-%E2%86%97-a371f7?style=flat-square&labelColor=161b22" alt="Open NeuraPilot"/></a> <a href="https://github.com/AKilalours/streaming-canvas-search-ltr"><img src="https://img.shields.io/badge/StreamLens-%E2%86%97-3fb950?style=flat-square&labelColor=161b22" alt="Open StreamLens"/></a> <a href="https://github.com/AKilalours/Esophageal-Cancer-Detection"><img src="https://img.shields.io/badge/GI_Lesion_Screening-%E2%86%97-ff7b72?style=flat-square&labelColor=161b22" alt="Open GI Lesion Screening"/></a> <a href="https://github.com/AKilalours/Gods_Eye"><img src="https://img.shields.io/badge/God%27s_Eye-%E2%86%97-db61a2?style=flat-square&labelColor=161b22" alt="Open God&#x27;s Eye"/></a>
 
-<table><tr>
-<td align="center" width="33%"><a href="https://github.com/AKilalours/opendrivefm"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/demos/opendrivefm.gif" width="100%" alt="OpenDriveFM: occupancy on a held-out nuScenes scene"/></a><br/><sub>OpenDriveFM: occupancy on a held-out nuScenes scene</sub></td>
-<td align="center" width="33%"><a href="https://github.com/AKilalours/plumbline"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/demos/plumbline.gif" width="100%" alt="Plumbline: a false merge caught, approved, fixed"/></a><br/><sub>Plumbline: a false merge caught, approved, fixed</sub></td>
-<td align="center" width="33%"><a href="https://github.com/AKilalours/Gods_Eye"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/demos/gods-eye.gif" width="100%" alt="God&#x27;s Eye: live public data on a 3D globe"/></a><br/><sub>God&#x27;s Eye: live public data on a 3D globe</sub></td>
-</tr></table>
+<p align="center">
+<a href="https://github.com/AKilalours/thursday-dinner-concierge"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/demos/thursday-dinner-concierge.gif?v=2026112508" width="49%" alt="Thursday Dinner Concierge: one sentence in, booked only after you approve"/></a>
+<a href="https://github.com/AKilalours/AskmeFirst"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/demos/askmefirst.gif?v=2026112508" width="49%" alt="Ask Me First: it asks you first, then writes the expert prompt"/></a>
+<a href="https://github.com/AKilalours/opendrivefm"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/demos/opendrivefm.gif?v=2026112508" width="49%" alt="OpenDriveFM: occupancy on a held-out nuScenes scene"/></a>
+<a href="https://github.com/AKilalours/Gods_Eye"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/demos/gods-eye.gif?v=2026112508" width="49%" alt="God&#x27;s Eye: live public data on a 3D globe"/></a>
+</p>
 
 </div>
 <!-- REEL:END -->
@@ -84,7 +85,7 @@ timelines.
 <br/>
 
 <!-- CATALOG:START -->
-<!-- generated by .github/scripts/build_catalog.py on 2026-11-25T08:04+00:00 - do not edit by hand -->
+<!-- generated by .github/scripts/build_catalog.py on 2026-11-25T08:20+00:00 - do not edit by hand -->
 <div align="center">
 
 <img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/generated/overview.svg?v=2026112508" width="100%" alt="39 repositories by area"/>
@@ -103,7 +104,7 @@ timelines.
 
 <p align="center">
 <a href="https://github.com/AKilalours/thursday-dinner-concierge"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/generated/card-thursday-dinner-concierge.svg?v=2026112508" width="49%" alt="Thursday Dinner Concierge: Agentic booking assistant: one sentence in, an on-policy dinner booked only after you approve."/></a>
-<a href="https://github.com/AKilalours/AskmeFirst"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/generated/card-askmefirst.svg?v=2026112508" width="49%" alt="Ask Me First: Asks you the right questions first, then hands ChatGPT or Claude expert instructions."/></a>
+<a href="https://github.com/AKilalours/AskmeFirst"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/generated/card-askmefirst.svg?v=2026112508" width="49%" alt="Ask Me First: Asks you the right questions first, then writes expert instructions for any AI assistant."/></a>
 <a href="https://github.com/AKilalours/Forge"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/generated/card-forge.svg?v=2026112508" width="49%" alt="FORGE: AI-generated text detection: DeBERTa-v3 fine-tuned on an RTX 4090, served by FastAPI."/></a>
 <a href="https://github.com/AKilalours/neurapilot"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/generated/card-neurapilot.svg?v=2026112508" width="49%" alt="NeuraPilot: Agentic RAG tutor on LangGraph and ChromaDB, with an eval harness that caught its own bug."/></a>
 <a href="https://github.com/AKilalours/rag-adversarial-robustness-eval-harness"><img src="https://raw.githubusercontent.com/AKilalours/AKilalours/main/assets/generated/card-rag-adversarial-robustness-eval-harness.svg?v=2026112508" width="49%" alt="Offline Voice RAG: Local speech-to-answer: faster-whisper ASR, BGE retrieval, Coqui TTS, cited answers."/></a>
